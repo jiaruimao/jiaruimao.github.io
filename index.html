@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiarui Mao</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+<!-- Open Graph / Social Preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trucnnth.github.io/">
+<meta property="og:title" content="Jiarui Mao">
+<meta property="og:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
+<meta property="og:image" content="https://trucnnth.github.io/img/headshot.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jiarui Mao">
+<meta name="twitter:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
+<meta name="twitter:image" content="https://trucnnth.github.io/img/headshot.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SAM NGUYEN — PERSONAL ACADEMIC SITE
+   Color palette: McKinsey navy + blue accent
+   ============================================================ */
+
+:root {
+  --navy: #051C2C;
+  --navy-light: #0a2940;
+  --blue: #2251FF;
+  --blue-hover: #1a3fcc;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --text-light: #888;
+  --bg: #fafafa;
+  --bg-alt: #f2f4f6;
+  --bg-card: #ffffff;
+  --border: #dde1e6;
+  --border-light: #eaedf0;
+  --white: #ffffff;
+  --nav-bg: #051C2C;
+  --nav-text: rgba(255,255,255,0.65);
+  --nav-text-hover: #ffffff;
+}
+
+[data-theme="dark"] {
+  --navy: #e8e6e1;
+  --navy-light: #c5c3be;
+  --blue: #5b8aff;
+  --blue-hover: #7da3ff;
+  --text: #e0ddd8;
+  --text-secondary: #a09d98;
+  --text-light: #7a7772;
+  --bg: #111110;
+  --bg-alt: #1a1918;
+  --bg-card: #1e1d1c;
+  --border: #2d2c2a;
+  --border-light: #252423;
+  --white: #e8e6e1;
+  --nav-bg: #0a0a09;
+  --nav-text: rgba(255,255,255,0.55);
+  --nav-text-hover: #e8e6e1;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  font-family: 'Source Sans 3', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.72;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--blue-hover); }
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.topnav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+}
+
+.topnav .site-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.topnav .nav-links {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.topnav .nav-links a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--nav-text);
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: all 0.2s;
+  letter-spacing: 0.01em;
+}
+.topnav .nav-links a:hover {
+  color: var(--nav-text-hover);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Mobile nav toggle */
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--white); margin: 4px 0; border-radius: 2px; }
+
+/* Theme toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1;
+  color: var(--nav-text);
+  transition: all 0.2s;
+}
+.theme-toggle:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: var(--nav-text-hover);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 56px 0 48px;
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.hero-photo-wrapper {
+  flex-shrink: 0;
+}
+
+.hero-photo {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--border);
+  display: block;
+}
+
+/* Placeholder for when no image yet */
+.hero-photo-placeholder {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg-alt), var(--border));
+  border: 3px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.hero-info h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.hero-info .subtitle {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+.blinking-cursor {
+  font-weight: 700;
+  font-size: 1.3em;
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-info .bio {
+  font-size: 0.94rem;
+  line-height: 1.78;
+  color: var(--text);
+  margin-top: 14px;
+}
+
+.hero-info .bio a { font-weight: 500; }
+
+.hero-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.hero-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 6px 14px;
+  border: 1.5px solid var(--navy);
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+.hero-links a:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff;
+}
+
+/* ============================================================
+   SECTIONS — shared
+   ============================================================ */
+section {
+  padding: 44px 0 0;
+}
+
+section h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 22px;
+  padding-bottom: 8px;
+  border-bottom: 2.5px solid var(--blue);
+  display: inline-block;
+}
+
+/* ============================================================
+   NEWS
+   ============================================================ */
+.news-list { list-style: none; }
+.news-list li {
+  display: flex;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.92rem;
+}
+.news-list li:last-child { border-bottom: none; }
+
+.news-date {
+  flex-shrink: 0;
+  width: 90px;
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 0.83rem;
+  padding-top: 1px;
+}
+
+.news-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.tag-funding {
+  background: rgba(34, 81, 255, 0.1);
+  color: var(--blue);
+}
+
+.tag-accepted {
+  background: rgba(16, 122, 87, 0.1);
+  color: #107a57;
+}
+
+.tag-newrole {
+  background: rgba(146, 64, 14, 0.1);
+  color: #92400e;
+}
+
+/* news visibility is now handled by JS */
+
+.show-all-btn {
+  display: block;
+  margin: 16px auto 0;
+  padding: 8px 20px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blue);
+  background: none;
+  border: 1.5px solid var(--blue);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.show-all-btn:hover {
+  background: var(--blue);
+  color: #ffffff;
+}
+
+.news-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+.filter-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff;
+}
+
+/* news filtering handled by JS */
+
+/* ============================================================
+   PRESENTATIONS & TALKS
+   ============================================================ */
+.pres-card {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.pres-card:hover {
+  box-shadow: 0 2px 12px rgba(5,28,44,0.06);
+  border-color: var(--blue);
+}
+
+.pres-thumb {
+  width: 120px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-light);
+  order: 2;
+}
+
+.pres-info { flex: 1; order: 1; }
+
+.pres-venues {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pres-venue-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.pres-type {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+
+.type-oral {
+  background: rgba(34, 81, 255, 0.1);
+  color: var(--blue);
+}
+
+.type-poster {
+  background: rgba(146, 64, 14, 0.1);
+  color: #92400e;
+}
+
+.type-accepted {
+  background: rgba(16, 122, 87, 0.1);
+  color: #107a57;
+}
+
+.type-talk {
+  background: rgba(88, 28, 135, 0.1);
+  color: #581c87;
+}
+
+.pres-filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.pres-card.filtered-out { display: none !important; }
+
+/* Highlight animation when scrolling to a card via anchor */
+@keyframes card-highlight {
+  0%   { box-shadow: 0 0 0 3px var(--blue); border-color: var(--blue); }
+  100% { box-shadow: 0 0 0 0px transparent; border-color: var(--border); }
+}
+.pres-card.highlight {
+  animation: card-highlight 2s ease-out forwards;
+}
+
+.pres-links {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: 8px;
+}
+.pres-links a {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 3px;
+  padding: 1px 6px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.pres-links a:hover {
+  background: var(--blue);
+  color: #fff;
+}
+.pres-links a.disabled {
+  color: var(--text-light);
+  border-color: var(--border);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.pres-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.pres-authors {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.pres-venue {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   AWARDS
+   ============================================================ */
+.award-list { list-style: none; }
+.award-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.92rem;
+  display: flex;
+  gap: 14px;
+}
+.award-list li:last-child { border-bottom: none; }
+
+.award-year {
+  flex-shrink: 0;
+  width: 48px;
+  font-weight: 700;
+  color: var(--blue);
+  font-size: 0.85rem;
+}
+
+.award-text { color: var(--text); }
+.award-text .award-detail {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* ============================================================
+   BEYOND THE LAB
+   ============================================================ */
+.life-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 14px;
+}
+
+.life-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.life-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 2px 12px rgba(34,81,255,0.08);
+}
+
+.life-card-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.life-link {
+  color: var(--blue);
+  font-weight: 500;
+}
+
+.life-icon { font-size: 22px; margin-bottom: 4px; }
+
+.life-stat {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.life-label {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  margin-top: 56px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--nav-bg);
+  color: var(--nav-text-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  z-index: 90;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--blue); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-links { justify-content: center; }
+  .hero-info h1 { font-size: 1.7rem; }
+
+  .topnav .nav-links { display: none; margin-right: 0; }
+  .topnav .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    padding: 12px 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .nav-toggle { display: block; }
+  .topnav .container { gap: 8px; }
+  .topnav .site-name { flex: 1; }
+  .theme-toggle { flex-shrink: 0; }
+
+  .life-grid { grid-template-columns: 1fr 1fr; }
+  .news-list li { flex-direction: column; gap: 2px; }
+  .news-date { width: auto; }
+  .award-list li { flex-direction: column; gap: 2px; }
+  .award-year { width: auto; }
+  .pres-card { flex-direction: column; }
+  .pres-thumb { width: 100%; height: 140px; order: -1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="topnav">
+  <div class="container">
+    <a href="#top" class="site-name">Jiarui Mao</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#news">CV Highlights</a>
+      <a href="#work">Work</a>
+      <a href="#life">Life</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+  </div>
+</nav>
+
+<!-- ========== HERO / ABOUT ========== -->
+<div class="container" id="top">
+
+  <section id="about">
+    <div class="hero">
+      <img src="img/headshot.jpg" alt="Jiarui Mao" class="hero-photo">
+
+      <div class="hero-info">
+        <h1>Jiarui Mao</h1>
+        <p class="subtitle">B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026)<span class="blinking-cursor">|</span></p>
+        <p class="bio">
+          Undergraduate researcher and student leader focused on neuroscience, psychology, and quantitative methods.
+          I work across wet-lab and computational workflows, including EEG/ERP studies, MRI/fMRI processing, and
+          statistical analysis using R, Python, and MATLAB.
+        </p>
+        <p class="bio" style="margin-top: 8px;">
+          Currently active in leadership and service through the International Neuroscience and Psychology Scholars Club
+          (Founder &amp; President), Angelcare Breast Cancer Volunteer Group, and academic coaching at the UNC Learning Center.
+        </p>
+
+        <div class="hero-links">
+          <a href="mailto:jiaruim@ad.unc.edu">Email</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== NEWS ========== -->
+  <section id="news">
+    <h2>CV Highlights</h2>
+    <div class="news-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="education">Education</button>
+      <button class="filter-btn" data-filter="leadership">Leadership</button>
+      <button class="filter-btn" data-filter="research">Research</button>
+    </div>
+    <ul class="news-list">
+      <li data-tag="education">
+        <span class="news-date">May 2026</span>
+        <span>B.S. in Biostatistics with a minor in Neuroscience at UNC-Chapel Hill. GPA 3.87.</span>
+      </li>
+      <li data-tag="education">
+        <span class="news-date">2022 - 2024</span>
+        <span>Dean's List from Fall 2022 through Spring 2024.</span>
+      </li>
+      <li data-tag="leadership">
+        <span class="news-date">Mar 2023 - Present</span>
+        <span>Founder and President, International Neuroscience and Psychology Scholars Club (40+ members; workshops and mentorship programs).</span>
+      </li>
+      <li data-tag="leadership">
+        <span class="news-date">May 2023 - Present</span>
+        <span>Angelcare Breast Cancer Volunteer Group: authored and edited patient-care content and supported major outreach events.</span>
+      </li>
+      <li data-tag="leadership">
+        <span class="news-date">2023 - 2024</span>
+        <span>Academic Coach, UNC Learning Center: delivered 50+ tutoring sessions on quantitative coursework and study strategies.</span>
+      </li>
+      <li data-tag="research">
+        <span class="news-date">Nov 2024 - Present</span>
+        <span>Research Assistant, YAP Lab (UNC Radiology): worked on optimal shrinkage denoising in high-resolution diffusion MRI.</span>
+      </li>
+      <li data-tag="research">
+        <span class="news-date">Jan 2024 - May 2024</span>
+        <span>Hopfinger Lab (UNC): EEG/ERP data collection and analysis for attentional suppression under unpredictable distractors.</span>
+      </li>
+      <li data-tag="research">
+        <span class="news-date">Jun 2023 - Aug 2023</span>
+        <span>Pasteur Institute: immunology research on RIPK1 and T-cell homeostasis using flow cytometry and molecular assays.</span>
+      </li>
+    </ul>
+    <button class="show-all-btn" onclick="toggleNews(this)">Show all</button>
+  </section>
+
+  <div id="work"></div>
+  <!-- ========== PRESENTATIONS & TALKS ========== -->
+  <section id="presentations">
+    <h2>Presentations &amp; Talks</h2>
+    <div class="pres-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="oral">Oral</button>
+      <button class="filter-btn" data-filter="poster">Poster</button>
+    </div>
+
+    <div class="pres-list">
+
+    <div class="pres-card" id="pres-annual-celebration" data-pres-tags="poster">
+      <div class="pres-info">
+        <div class="pres-title">2-Br-LSD Treatment and Related Behavioral Outcomes <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
+        <div class="pres-authors">Oleh D., Jenny Q., Rachel P., <strong>J. Mao</strong></div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Annual Celebration of Undergraduate Research · Chapel Hill, NC · April 2024</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pres-card" id="pres-psych-symposium" data-pres-tags="oral poster">
+      <div class="pres-info">
+        <div class="pres-title">Neuroscience and Psychology Student Research Symposium Contributions <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
+        <div class="pres-authors">Khoi H., T. Patrick, Guoye L., <strong>J. Mao</strong></div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-oral">Oral</span> UNC Student Research Events · Chapel Hill, NC · 2024</div>
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Departmental/Student Symposiums · Chapel Hill, NC · 2024</div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+
+  <!-- ========== BEYOND THE LAB ========== -->
+  <section id="life">
+    <h2>Beyond the Lab</h2>
+    <div class="life-grid"></div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    &copy; 2026 Jiarui Mao
+  </footer>
+
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Back to top">↑</button>
+
+<script>
+  // Theme toggle
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+  }
+
+  // Load saved theme or respect system preference
+  (function() {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '🌙';
+    }
+  })();
+
+  // Back to top visibility
+  const btn = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // News: max visible items
+  const NEWS_MAX = 15;
+  let newsExpanded = false;
+  let newsFilter = 'all';
+
+  function applyNewsDisplay() {
+    const items = document.querySelectorAll('.news-list li');
+    const showAllBtn = document.querySelector('.show-all-btn');
+    let visibleCount = 0;
+    let totalMatching = 0;
+
+    items.forEach(li => {
+      const tag = li.dataset.tag;
+      const matchesFilter = (newsFilter === 'all') || (tag === newsFilter);
+
+      if (!matchesFilter) {
+        li.style.display = 'none';
+      } else {
+        totalMatching++;
+        if (newsExpanded || visibleCount < NEWS_MAX) {
+          li.style.display = '';
+          visibleCount++;
+        } else {
+          li.style.display = 'none';
+        }
+      }
+    });
+
+    // Show/hide the "Show all" button
+    if (totalMatching > NEWS_MAX && !newsExpanded) {
+      showAllBtn.style.display = 'block';
+      showAllBtn.textContent = 'Show all ↓';
+    } else if (newsExpanded && totalMatching > NEWS_MAX) {
+      showAllBtn.style.display = 'block';
+      showAllBtn.textContent = 'Show less ↑';
+    } else {
+      showAllBtn.style.display = 'none';
+    }
+  }
+
+  // Toggle show all / show less
+  function toggleNews(button) {
+    newsExpanded = !newsExpanded;
+    applyNewsDisplay();
+  }
+
+  // News tag filter buttons
+  document.querySelectorAll('.news-filters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      newsFilter = btn.dataset.filter;
+      newsExpanded = false;
+
+      document.querySelectorAll('.news-filters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      applyNewsDisplay();
+    });
+  });
+
+  // Apply on page load
+  applyNewsDisplay();
+  // Highlight target card when clicking anchor links to presentations
+  document.querySelectorAll('a[href^="#pres-"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        // Remove any existing highlight
+        document.querySelectorAll('.pres-card.highlight').forEach(c => c.classList.remove('highlight'));
+        // Wait for scroll to finish, then highlight
+        setTimeout(() => {
+          target.classList.add('highlight');
+          // Remove class after animation completes
+          setTimeout(() => target.classList.remove('highlight'), 2100);
+        }, 400);
+      }
+    });
+  });
+
+  // Presentations tag filter
+  document.querySelectorAll('.pres-filters .filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      document.querySelectorAll('.pres-filters .filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.pres-card').forEach(card => {
+        const tags = (card.dataset.presTags || '').split(' ');
+        if (filter === 'all') {
+          card.classList.remove('filtered-out');
+        } else {
+          card.classList.toggle('filtered-out', !tags.includes(filter));
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
