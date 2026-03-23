@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGsquared Consulting — Truc "Sam" Nguyen</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #051C2C;
+  --blue: #2251FF;
+  --blue-hover: #1a3fcc;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --text-light: #888;
+  --bg: #fafafa;
+  --bg-alt: #f2f4f6;
+  --bg-card: #ffffff;
+  --border: #dde1e6;
+  --border-light: #eaedf0;
+  --white: #ffffff;
+  --nav-bg: #051C2C;
+  --nav-text: rgba(255,255,255,0.65);
+  --nav-text-hover: #ffffff;
+}
+
+[data-theme="dark"] {
+  --navy: #e8e6e1;
+  --blue: #5b8aff;
+  --blue-hover: #7da3ff;
+  --text: #e0ddd8;
+  --text-secondary: #a09d98;
+  --text-light: #7a7772;
+  --bg: #111110;
+  --bg-alt: #1a1918;
+  --bg-card: #1e1d1c;
+  --border: #2d2c2a;
+  --border-light: #252423;
+  --white: #e8e6e1;
+  --nav-bg: #0a0a09;
+  --nav-text: rgba(255,255,255,0.55);
+  --nav-text-hover: #e8e6e1;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.72;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topnav .container {
+  display: flex; justify-content: space-between; align-items: center; height: 56px;
+}
+.topnav .site-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--white);
+}
+.topnav .nav-right { display: flex; gap: 12px; align-items: center; }
+.topnav .nav-right a {
+  font-size: 0.8rem; font-weight: 600; color: var(--nav-text);
+  padding: 6px 12px; border-radius: 5px; transition: all 0.2s;
+}
+.topnav .nav-right a:hover { color: var(--nav-text-hover); background: rgba(255,255,255,0.08); }
+.theme-toggle {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px; padding: 5px 10px; cursor: pointer;
+  font-size: 0.85rem; line-height: 1; color: var(--nav-text); transition: all 0.2s;
+}
+.theme-toggle:hover { border-color: rgba(255,255,255,0.5); color: var(--nav-text-hover); }
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  padding: 48px 0 12px;
+}
+.page-header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.8rem; font-weight: 700; color: var(--navy);
+}
+.page-header .subtitle {
+  font-size: 0.95rem; color: var(--text-secondary); margin-top: 4px;
+}
+.page-header .subtitle a { font-weight: 500; }
+.page-header .intro {
+  font-size: 0.92rem; color: var(--text-secondary); margin-top: 12px;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+  line-height: 1.7;
+}
+
+/* Role Progression */
+.progression {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  margin: 28px auto 36px;
+  max-width: 560px;
+}
+.prog-step { text-align: center; flex: 1; }
+.prog-role { font-size: 0.82rem; font-weight: 700; color: var(--navy); }
+.prog-date { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+.prog-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--blue); margin: 6px auto 4px;
+}
+.prog-line { flex: 0 0 40px; height: 2px; background: var(--border); margin-top: -14px; }
+
+/* ============================================================
+   ENGAGEMENT DATABASE CARDS
+   ============================================================ */
+.eng-db {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.eng-row {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.eng-row:hover {
+  box-shadow: 0 2px 12px rgba(5,28,44,0.06);
+  border-color: var(--blue);
+}
+
+/* Top row: role tag + client headline */
+.eng-row-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.eng-role-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.role-partner { background: rgba(34, 81, 255, 0.1); color: var(--blue); }
+.role-em { background: rgba(146, 64, 14, 0.1); color: #92400e; }
+.role-consultant { background: rgba(16, 122, 87, 0.1); color: #107a57; }
+
+.eng-client-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+/* Metrics row */
+.eng-metrics {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.eng-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-alt);
+  padding: 3px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.eng-metric .metric-label {
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+/* Action + Impact two-column */
+.eng-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.eng-col-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.eng-col ul {
+  list-style: none;
+  font-size: 0.86rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+.eng-col ul li {
+  padding: 2px 0 2px 14px;
+  position: relative;
+}
+.eng-col ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--text-light);
+}
+.eng-col ul strong {
+  color: var(--navy);
+}
+
+/* Onboarding callout */
+.callout {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  line-height: 1.65;
+}
+.callout strong { color: var(--navy); }
+
+/* Footer */
+footer {
+  margin-top: 48px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.5rem; }
+  .progression { flex-wrap: wrap; gap: 4px; }
+  .prog-line { flex: 0 0 20px; }
+  .eng-details { grid-template-columns: 1fr; gap: 10px; }
+  .eng-metrics { gap: 4px; }
+  .eng-metric { font-size: 0.72rem; padding: 2px 8px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a href="index.html" class="site-name">Truc "Sam" Nguyen</a>
+    <div class="nav-right">
+      <a href="index.html">&larr; Back</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#9728;&#65039;</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>&#128188; Consulting at CGsquared</h1>
+    <p class="subtitle"><a href="https://gbcc.web.unc.edu/consulting/cg2/" target="_blank">Carolina Graduate Consulting Group</a> &middot; UNC-Chapel Hill</p>
+    <p class="intro">
+      CGsquared is a student-led pro bono consulting group that delivers strategy engagements
+      for startups, nonprofits, and university units. Below are selected engagements I led or contributed to.
+    </p>
+  </div>
+
+
+  <!-- Engagement Database -->
+  <div class="eng-db">
+
+    <!-- Engagement 1: Medtech Commercialization -->
+    <div class="eng-row">
+      <div class="eng-row-header">
+        <span class="eng-role-tag role-partner">Partner</span>
+        <span class="eng-client-title">$15M Medtech Startup &middot; Commercialization Strategy</span>
+      </div>
+      <div class="eng-metrics">
+        <span class="eng-metric"><span class="metric-label">Industry</span> Healthcare / Medtech</span>
+        <span class="eng-metric"><span class="metric-label">Year</span> 2026</span>
+        <span class="eng-metric"><span class="metric-label">Team of</span> 5</span>
+        <span class="eng-metric"><span class="metric-label">Duration</span> 10 wks</span>
+      </div>
+      <div class="eng-details">
+        <div class="eng-col">
+          <div class="eng-col-label">What I Did</div>
+          <ul>
+            <li>Oversaw <strong>5 consultants</strong> delivering 10-week commercialization strategy for $15M medtech startup pursuing <strong>$1.3M</strong> funding</li>
+          </ul>
+        </div>
+        <div class="eng-col">
+          <div class="eng-col-label">Impact</div>
+          <ul>
+            <li>Expanded target market <strong>7x</strong> (25K younger-onset to <strong>180K</strong> rural patients), shaping revised GTM and investor positioning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagement 2: Medtech Unmet-Needs -->
+    <div class="eng-row">
+      <div class="eng-row-header">
+        <span class="eng-role-tag role-partner">Partner</span>
+        <span class="eng-client-title">$15M Medtech Startup &middot; Unmet-Needs Assessment</span>
+      </div>
+      <div class="eng-metrics">
+        <span class="eng-metric"><span class="metric-label">Industry</span> Healthcare / Medtech</span>
+        <span class="eng-metric"><span class="metric-label">Year</span> 2025</span>
+        <span class="eng-metric"><span class="metric-label">Duration</span> 3 wks</span>
+      </div>
+      <div class="eng-details">
+        <div class="eng-col">
+          <div class="eng-col-label">What I Did</div>
+          <ul>
+            <li>Directed 3-week unmet-needs assessment ahead of <strong>$100K</strong> funding milestone, conducting stakeholder interviews</li>
+          </ul>
+        </div>
+        <div class="eng-col">
+          <div class="eng-col-label">Impact</div>
+          <ul>
+            <li>Identified regulatory and scalability barriers early, redirecting research strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagement 3: Pediatric Education GTM -->
+    <div class="eng-row">
+      <div class="eng-row-header">
+        <span class="eng-role-tag role-partner">Partner</span>
+        <span class="eng-client-title">$100K Pediatric Education Client &middot; Go-to-Market Strategy</span>
+      </div>
+      <div class="eng-metrics">
+        <span class="eng-metric"><span class="metric-label">Industry</span> Education / Healthcare</span>
+        <span class="eng-metric"><span class="metric-label">Year</span> 2025</span>
+        <span class="eng-metric"><span class="metric-label">Team of</span> 7</span>
+        <span class="eng-metric"><span class="metric-label">Duration</span> 12 wks</span>
+      </div>
+      <div class="eng-details">
+        <div class="eng-col">
+          <div class="eng-col-label">What I Did</div>
+          <ul>
+            <li>Led <strong>7-member</strong> team, restructuring scope to <strong>2-phase</strong> engagement, scaling KOL validation to <strong>20 interviews</strong></li>
+          </ul>
+        </div>
+        <div class="eng-col">
+          <div class="eng-col-label">Impact</div>
+          <ul>
+            <li>Drove client decision to pursue primary research on <strong>2nd product line</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onboarding callout (folded into Partner) - hidden for now
+    <div class="callout">
+      &#128161; <strong>Also as Partner:</strong> Designed and launched a <strong>2-week onboarding program</strong> standardizing interview frameworks, discussion guides, segmentation, and market sizing toolkits &mdash; deployed across <strong>3 engagements (10 consultants)</strong>, cutting new-consultant ramp-up time by <strong>50%</strong>.
+    </div>
+    -->
+
+    <!-- Engagement 4: University Innovation Hub -->
+    <div class="eng-row">
+      <div class="eng-row-header">
+        <span class="eng-role-tag role-em">Engagement Manager</span>
+        <span class="eng-client-title">University Innovation Hub &middot; Strategic Benchmarking</span>
+      </div>
+      <div class="eng-metrics">
+        <span class="eng-metric"><span class="metric-label">Industry</span> Higher Education</span>
+        <span class="eng-metric"><span class="metric-label">Year</span> 2024</span>
+        <span class="eng-metric"><span class="metric-label">Team of</span> 3</span>
+        <span class="eng-metric"><span class="metric-label">Duration</span> 4 wks</span>
+      </div>
+      <div class="eng-details">
+        <div class="eng-col">
+          <div class="eng-col-label">What I Did</div>
+          <ul>
+            <li>Led <strong>3-consultant</strong> team conducting benchmarking and <strong>10 executive interviews</strong> across peer institutions</li>
+          </ul>
+        </div>
+        <div class="eng-col">
+          <div class="eng-col-label">Impact</div>
+          <ul>
+            <li>Delivered <strong>5 strategic recommendations</strong> to UNC Vice Chancellor for Innovation on potential mission realignment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagement 5: Epilepsy Market Strategy -->
+    <div class="eng-row">
+      <div class="eng-row-header">
+        <span class="eng-role-tag role-consultant">Consultant</span>
+        <span class="eng-client-title">$3M Medtech Startup &middot; Epilepsy Market Strategy</span>
+      </div>
+      <div class="eng-metrics">
+        <span class="eng-metric"><span class="metric-label">Industry</span> Healthcare / Medtech</span>
+        <span class="eng-metric"><span class="metric-label">Year</span> 2024</span>
+        <span class="eng-metric"><span class="metric-label">Team of</span> 4</span>
+        <span class="eng-metric"><span class="metric-label">Duration</span> 16 wks</span>
+      </div>
+      <div class="eng-details">
+        <div class="eng-col">
+          <div class="eng-col-label">What I Did</div>
+          <ul>
+            <li>Spearheaded physician research via <strong>12 interviews</strong> with physicians and advocacy leaders, identifying adoption barriers</li>
+          </ul>
+        </div>
+        <div class="eng-col">
+          <div class="eng-col-label">Impact</div>
+          <ul>
+            <li>Informed CEO-adopted recommendations to pursue <strong>EMR partnership</strong> strategy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Truc "Sam" Nguyen
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    document.querySelector('.theme-toggle').textContent = next === 'dark' ? '\uD83C\uDF19' : '\u2600\uFE0F';
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = saved || (prefersDark ? 'dark' : 'light');
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '\uD83C\uDF19';
+    }
+  })();
+</script>
+
+</body>
+</html>

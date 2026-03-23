@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Parks Checklist — Truc "Sam" Nguyen</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #051C2C;
+  --blue: #2251FF;
+  --blue-hover: #1a3fcc;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --text-light: #888;
+  --bg: #fafafa;
+  --bg-alt: #f2f4f6;
+  --bg-card: #ffffff;
+  --border: #dde1e6;
+  --border-light: #eaedf0;
+  --white: #ffffff;
+  --nav-bg: #051C2C;
+  --nav-text: rgba(255,255,255,0.65);
+  --nav-text-hover: #ffffff;
+  --check-green: #107a57;
+}
+
+[data-theme="dark"] {
+  --navy: #e8e6e1;
+  --blue: #5b8aff;
+  --blue-hover: #7da3ff;
+  --text: #e0ddd8;
+  --text-secondary: #a09d98;
+  --text-light: #7a7772;
+  --bg: #111110;
+  --bg-alt: #1a1918;
+  --bg-card: #1e1d1c;
+  --border: #2d2c2a;
+  --border-light: #252423;
+  --white: #e8e6e1;
+  --nav-bg: #0a0a09;
+  --nav-text: rgba(255,255,255,0.55);
+  --nav-text-hover: #e8e6e1;
+  --check-green: #34d399;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.72;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; }
+
+.container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topnav .container {
+  display: flex; justify-content: space-between; align-items: center; height: 56px;
+}
+.topnav .site-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--white);
+}
+.topnav .nav-right { display: flex; gap: 12px; align-items: center; }
+.topnav .nav-right a {
+  font-size: 0.8rem; font-weight: 600; color: var(--nav-text);
+  padding: 6px 12px; border-radius: 5px; transition: all 0.2s;
+}
+.topnav .nav-right a:hover { color: var(--nav-text-hover); background: rgba(255,255,255,0.08); }
+.theme-toggle {
+  background: none; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 5px; padding: 5px 10px; cursor: pointer;
+  font-size: 0.85rem; color: var(--nav-text); transition: all 0.2s;
+}
+.theme-toggle:hover { border-color: rgba(255,255,255,0.5); color: var(--nav-text-hover); }
+
+/* Header */
+.page-header {
+  padding: 48px 0 12px;
+  text-align: center;
+}
+.page-header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.8rem; font-weight: 700; color: var(--navy);
+}
+.page-header .counter {
+  font-size: 1rem; color: var(--text-secondary); margin-top: 4px;
+}
+.page-header .counter span {
+  font-weight: 700; color: var(--check-green);
+}
+
+/* Progress bar */
+.progress-bar-wrap {
+  width: 100%; max-width: 400px; margin: 16px auto 0;
+  height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;
+}
+.progress-bar {
+  height: 100%; background: var(--check-green); border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+/* Sort controls */
+.sort-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; margin-top: 16px;
+}
+.sort-label { font-size: 0.82rem; color: var(--text-light); margin-right: 4px; }
+.sort-btn {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.78rem; font-weight: 600;
+  padding: 5px 14px; border: 1.5px solid var(--border);
+  border-radius: 20px; background: none;
+  color: var(--text-secondary); cursor: pointer; transition: all 0.2s;
+}
+.sort-btn:hover { border-color: var(--navy); color: var(--navy); }
+.sort-btn.active { background: var(--blue); border-color: var(--blue); color: #ffffff; }
+
+/* Park list - 2 columns, filled column-by-column */
+.park-columns {
+  display: flex;
+  gap: 32px;
+  padding: 32px 0 48px;
+}
+.park-col {
+  flex: 1;
+  list-style: none;
+}
+.park-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.88rem;
+}
+
+.park-item input[type="checkbox"] {
+  width: 16px; height: 16px; accent-color: var(--check-green);
+  flex-shrink: 0;
+}
+
+.park-name { flex: 1; color: var(--text); font-size: 0.86rem; }
+.park-name .park-state {
+  font-size: 0.75rem; color: var(--text-light); font-weight: 400;
+}
+.park-item.visited .park-name { color: var(--check-green); }
+.park-item.visited .park-name .park-state { color: var(--check-green); opacity: 0.7; }
+
+.park-date {
+  font-size: 0.75rem; color: var(--check-green); font-weight: 600;
+  flex-shrink: 0; min-width: 65px; text-align: right;
+}
+
+footer {
+  padding: 24px 0; border-top: 1px solid var(--border);
+  text-align: center; font-size: 0.82rem; color: var(--text-light);
+}
+
+@media (max-width: 640px) {
+  .park-columns { flex-direction: column; gap: 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a href="index.html" class="site-name">Truc "Sam" Nguyen</a>
+    <div class="nav-right">
+      <a href="index.html">← Back</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>🏔️ National Parks Checklist</h1>
+    <p class="counter"><span id="visited-count">0</span> / 63 visited</p>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="sort-controls">
+      <span class="sort-label">Sort by:</span>
+      <button class="sort-btn active" data-sort="name">Park Name</button>
+      <button class="sort-btn" data-sort="date">Visited Date</button>
+    </div>
+  </div>
+
+  <div class="park-columns">
+    <ul class="park-col" id="park-col-left"></ul>
+    <ul class="park-col" id="park-col-right"></ul>
+  </div>
+
+  <footer>&copy; 2026 Truc "Sam" Nguyen</footer>
+</div>
+
+<script>
+const parks = [
+  { name: "Acadia", state: "Maine" },
+  { name: "American Samoa", state: "American Samoa" },
+  { name: "Arches", state: "Utah" },
+  { name: "Badlands", state: "South Dakota" },
+  { name: "Big Bend", state: "Texas" },
+  { name: "Biscayne", state: "Florida", visited: "Mar 2025" },
+  { name: "Black Canyon of the Gunnison", state: "Colorado" },
+  { name: "Bryce Canyon", state: "Utah" },
+  { name: "Canyonlands", state: "Utah" },
+  { name: "Capitol Reef", state: "Utah" },
+  { name: "Carlsbad Caverns", state: "New Mexico" },
+  { name: "Channel Islands", state: "California" },
+  { name: "Congaree", state: "South Carolina", visited: "Mar 2026" },
+  { name: "Crater Lake", state: "Oregon" },
+  { name: "Cuyahoga Valley", state: "Ohio", visited: "May 2021" },
+  { name: "Death Valley", state: "California" },
+  { name: "Denali", state: "Alaska" },
+  { name: "Dry Tortugas", state: "Florida" },
+  { name: "Everglades", state: "Florida", visited: "Mar 2025" },
+  { name: "Gates of the Arctic", state: "Alaska" },
+  { name: "Gateway Arch", state: "Missouri" },
+  { name: "Glacier", state: "Montana" },
+  { name: "Glacier Bay", state: "Alaska" },
+  { name: "Grand Canyon", state: "Arizona", visited: "Dec 2022" },
+  { name: "Grand Teton", state: "Wyoming" },
+  { name: "Great Basin", state: "Nevada" },
+  { name: "Great Sand Dunes", state: "Colorado" },
+  { name: "Great Smoky Mountains", state: "Tennessee / North Carolina", visited: "Oct 2023" },
+  { name: "Guadalupe Mountains", state: "Texas" },
+  { name: "Haleakalā", state: "Hawaii" },
+  { name: "Hawai'i Volcanoes", state: "Hawaii" },
+  { name: "Hot Springs", state: "Arkansas" },
+  { name: "Indiana Dunes", state: "Indiana" },
+  { name: "Isle Royale", state: "Michigan" },
+  { name: "Joshua Tree", state: "California", visited: "Mar 2023" },
+  { name: "Katmai", state: "Alaska" },
+  { name: "Kenai Fjords", state: "Alaska" },
+  { name: "Kings Canyon", state: "California", visited: "Jul 2024" },
+  { name: "Kobuk Valley", state: "Alaska" },
+  { name: "Lake Clark", state: "Alaska" },
+  { name: "Lassen Volcanic", state: "California" },
+  { name: "Mammoth Cave", state: "Kentucky" },
+  { name: "Mesa Verde", state: "Colorado" },
+  { name: "Mount Rainier", state: "Washington" },
+  { name: "New River Gorge", state: "West Virginia" },
+  { name: "North Cascades", state: "Washington" },
+  { name: "Olympic", state: "Washington" },
+  { name: "Petrified Forest", state: "Arizona" },
+  { name: "Pinnacles", state: "California" },
+  { name: "Redwood", state: "California" },
+  { name: "Rocky Mountain", state: "Colorado" },
+  { name: "Saguaro", state: "Arizona" },
+  { name: "Sequoia", state: "California", visited: "Jul 2024" },
+  { name: "Shenandoah", state: "Virginia" },
+  { name: "Theodore Roosevelt", state: "North Dakota" },
+  { name: "Virgin Islands", state: "U.S. Virgin Islands" },
+  { name: "Voyageurs", state: "Minnesota" },
+  { name: "White Sands", state: "New Mexico" },
+  { name: "Wind Cave", state: "South Dakota" },
+  { name: "Wrangell–St. Elias", state: "Alaska" },
+  { name: "Yellowstone", state: "Wyoming / Montana / Idaho" },
+  { name: "Yosemite", state: "California" },
+  { name: "Zion", state: "Utah" }
+];
+
+let currentSort = 'name';
+
+const dateMap = {
+  'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+  'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+};
+
+function parseDateValue(dateStr) {
+  if (!dateStr) return 0;
+  const parts = dateStr.split(' ');
+  const month = dateMap[parts[0]] || 0;
+  const year = parseInt(parts[1]) || 0;
+  return year * 100 + month;
+}
+
+function getSorted() {
+  const indexed = parks.map((p, i) => ({ ...p, idx: i }));
+  if (currentSort === 'date') {
+    // Visited first (newest first), then unvisited alphabetically
+    return indexed.sort((a, b) => {
+      const aVal = parseDateValue(a.visited);
+      const bVal = parseDateValue(b.visited);
+      if (aVal && !bVal) return -1;
+      if (!aVal && bVal) return 1;
+      if (aVal && bVal) return bVal - aVal;
+      return a.name.localeCompare(b.name);
+    });
+  }
+  return indexed.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function render() {
+  const leftCol = document.getElementById('park-col-left');
+  const rightCol = document.getElementById('park-col-right');
+  leftCol.innerHTML = '';
+  rightCol.innerHTML = '';
+  const sorted = getSorted();
+  const mid = Math.ceil(sorted.length / 2);
+  sorted.forEach((park, i) => {
+    const isVisited = !!park.visited;
+    const li = document.createElement('li');
+    li.className = 'park-item' + (isVisited ? ' visited' : '');
+    li.innerHTML = `
+      <input type="checkbox" ${isVisited ? 'checked disabled' : 'disabled'}>
+      <span class="park-name">${park.name} <span class="park-state">(${park.state})</span></span>
+      ${isVisited ? `<span class="park-date">${park.visited}</span>` : ''}
+    `;
+    if (i < mid) leftCol.appendChild(li);
+    else rightCol.appendChild(li);
+  });
+  updateCounter();
+}
+
+function updateCounter() {
+  const count = parks.filter(p => p.visited).length;
+  document.getElementById('visited-count').textContent = count;
+  document.getElementById('progress-bar').style.width = (count / 63 * 100) + '%';
+}
+
+// Sort button listeners
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentSort = btn.dataset.sort;
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+});
+
+// Theme
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'light');
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '🌙';
+  }
+})();
+
+render();
+</script>
+
+</body>
+</html>
