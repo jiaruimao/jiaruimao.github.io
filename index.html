@@ -9,16 +9,16 @@
 
 <!-- Open Graph / Social Preview -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://trucnnth.github.io/">
+<meta property="og:url" content="https://jiaruimao.github.io/">
 <meta property="og:title" content="Jiarui Mao">
 <meta property="og:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
-<meta property="og:image" content="https://trucnnth.github.io/img/headshot.jpg">
+<meta property="og:image" content="https://jiaruimao.github.io/img/profile.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jiarui Mao">
 <meta name="twitter:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
-<meta name="twitter:image" content="https://trucnnth.github.io/img/headshot.jpg">
+<meta name="twitter:image" content="https://jiaruimao.github.io/img/profile.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -29,41 +29,23 @@
    ============================================================ */
 
 :root {
-  --navy: #051C2C;
-  --navy-light: #0a2940;
-  --blue: #2251FF;
-  --blue-hover: #1a3fcc;
+  --navy: #27187E;
+  --navy-light: #27187E;
+  --blue: #74A2FC;
+  --blue-hover: #5f8df0;
+  --accent: #FF5E00;
   --text: #1a1a1a;
   --text-secondary: #555;
   --text-light: #888;
-  --bg: #fafafa;
-  --bg-alt: #f2f4f6;
+  --bg: #ffffff;
+  --bg-alt: #F0F1F5;
   --bg-card: #ffffff;
-  --border: #dde1e6;
+  --border: #B0C6FF;
   --border-light: #eaedf0;
   --white: #ffffff;
-  --nav-bg: #051C2C;
+  --nav-bg: #27187E;
   --nav-text: rgba(255,255,255,0.65);
   --nav-text-hover: #ffffff;
-}
-
-[data-theme="dark"] {
-  --navy: #e8e6e1;
-  --navy-light: #c5c3be;
-  --blue: #5b8aff;
-  --blue-hover: #7da3ff;
-  --text: #e0ddd8;
-  --text-secondary: #a09d98;
-  --text-light: #7a7772;
-  --bg: #111110;
-  --bg-alt: #1a1918;
-  --bg-card: #1e1d1c;
-  --border: #2d2c2a;
-  --border-light: #252423;
-  --white: #e8e6e1;
-  --nav-bg: #0a0a09;
-  --nav-text: rgba(255,255,255,0.55);
-  --nav-text-hover: #e8e6e1;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -107,7 +89,7 @@ a:hover { color: var(--blue-hover); }
 }
 
 .topnav .site-name {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "ITC Avant Garde Gothic Std Bold", "ITC Avant Garde Gothic", "Avant Garde", "Century Gothic", sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--white);
@@ -142,19 +124,7 @@ a:hover { color: var(--blue-hover); }
 
 /* Theme toggle */
 .theme-toggle {
-  background: none;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  line-height: 1;
-  color: var(--nav-text);
-  transition: all 0.2s;
-}
-.theme-toggle:hover {
-  border-color: rgba(255,255,255,0.5);
-  color: var(--nav-text-hover);
+  display: none;
 }
 
 /* ============================================================
@@ -175,8 +145,8 @@ a:hover { color: var(--blue-hover); }
   width: 175px;
   height: 175px;
   border-radius: 50%;
-  border: 3px solid #1a3fcc;
-  background: #2251FF;
+  object-fit: cover;
+  border: 3px solid var(--blue);
   display: block;
 }
 
@@ -196,7 +166,7 @@ a:hover { color: var(--blue-hover); }
 }
 
 .hero-info h1 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "ITC Avant Garde Gothic Std Bold", "ITC Avant Garde Gothic", "Avant Garde", "Century Gothic", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -687,7 +657,6 @@ footer {
       <a href="#work">Work</a>
       <a href="#life">Life</a>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀️</button>
   </div>
 </nav>
 
@@ -696,7 +665,7 @@ footer {
 
   <section id="about">
     <div class="hero">
-      <div class="hero-photo" aria-hidden="true"></div>
+      <img src="img/profile.png" alt="Jiarui Mao" class="hero-photo">
 
       <div class="hero-info">
         <h1>Jiarui Mao</h1>
@@ -818,27 +787,6 @@ footer {
 <button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Back to top">↑</button>
 
 <script>
-  // Theme toggle
-  function toggleTheme() {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    document.querySelector('.theme-toggle').textContent = next === 'dark' ? '🌙' : '☀️';
-  }
-
-  // Load saved theme or respect system preference
-  (function() {
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = saved || (prefersDark ? 'dark' : 'light');
-    if (theme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.querySelector('.theme-toggle').textContent = '🌙';
-    }
-  })();
-
   // Back to top visibility
   const btn = document.querySelector('.back-to-top');
   window.addEventListener('scroll', () => {
