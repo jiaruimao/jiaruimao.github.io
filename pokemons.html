@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokemons · Jiarui Mao</title>
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #27187E;
+  --blue: #74A2FC;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --bg: #ffffff;
+  --border: #B0C6FF;
+  --nav-bg: #27187E;
+  --nav-text: rgba(255,255,255,0.65);
+  --nav-text-hover: #ffffff;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Source Sans 3', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.72;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; }
+
+.container { max-width: 840px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.topnav .container { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+.topnav .site-name { font-size: 1.05rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
+.topnav .nav-right a {
+  font-size: 0.8rem; font-weight: 600; color: var(--nav-text);
+  padding: 6px 12px; border-radius: 5px; transition: all 0.2s;
+}
+.topnav .nav-right a:hover { color: var(--nav-text-hover); background: rgba(255,255,255,0.08); }
+
+/* ---------- Floating pokemon (locked view) ---------- */
+#lock {
+  position: fixed; inset: 56px 0 0 0;
+  background: linear-gradient(180deg, #eef3ff 0%, #dfe8ff 100%);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.floater {
+  position: absolute;
+  border-radius: 50%;
+  /* swap background for background-image: url(img/xxx.png) + image-rendering: pixelated later */
+  opacity: 0.85;
+  animation: float var(--dur) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+@keyframes float {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(var(--dx), calc(var(--dy) * -0.5)); }
+  100% { transform: translate(calc(var(--dx) * -0.6), var(--dy)); }
+}
+
+.login {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  width: min(340px, calc(100vw - 48px));
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(39,24,126,0.15);
+}
+.login h1 { font-size: 1.2rem; color: var(--navy); margin-bottom: 4px; }
+.login p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px; }
+.login input {
+  width: 100%; padding: 9px 12px; font: inherit;
+  border: 1px solid var(--border); border-radius: 6px; outline: none;
+}
+.login input:focus { border-color: var(--navy); }
+.login button {
+  margin-top: 10px; width: 100%; padding: 9px; font: inherit; font-weight: 600;
+  background: var(--navy); color: #fff; border: 0; border-radius: 6px; cursor: pointer;
+}
+.login button:hover { opacity: 0.9; }
+.login .err { color: #c0392b; font-size: 0.85rem; min-height: 1.2em; margin-top: 8px; }
+.shake { animation: shake 0.35s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+/* ---------- Unlocked content ---------- */
+#content { display: none; padding: 48px 0; }
+#content h1 { font-size: 1.8rem; color: var(--navy); margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="container">
+    <a href="index.html" class="site-name">Jiarui Mao</a>
+    <div class="nav-right"><a href="index.html">← Back</a></div>
+  </div>
+</nav>
+
+<!-- Locked view: floating pokemon + password prompt -->
+<div id="lock">
+  <form class="login" id="loginForm" autocomplete="off">
+    <h1>Pokemons</h1>
+    <p>Enter the password to view this page.</p>
+    <input type="password" id="pw" placeholder="Password" autofocus aria-label="Password">
+    <button type="submit">Enter</button>
+    <div class="err" id="err"></div>
+  </form>
+</div>
+
+<!-- Protected content: put the real Pokemon stuff here -->
+<div id="content">
+  <div class="container">
+    <h1>Pokemons</h1>
+    <p>Welcome! Pokemon content goes here.</p>
+  </div>
+</div>
+
+<script>
+// SHA-256 of the password. To change it, run:  printf 'newpassword' | sha256sum
+// NOTE: this is client-side only (a static site has no server), so it keeps casual
+// visitors out but is not real security. Don't put anything truly secret in this file.
+const PW_HASH = '43999461d22f67840fcd9b8824293eaa4f18146e57b2c651bcd925e3b3e4e429';
+const KEY = 'pokemons-unlocked';
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function unlock() {
+  document.getElementById('lock').remove();
+  document.getElementById('content').style.display = 'block';
+}
+
+// Random-size circles standing in for pixel-art pokemon
+function spawnFloaters(n) {
+  const lock = document.getElementById('lock');
+  const colors = ['#FF5E00', '#74A2FC', '#FFD23F', '#6BCB77', '#EE6C9B', '#9B7EDE', '#4D96FF'];
+  for (let i = 0; i < n; i++) {
+    const size = 24 + Math.random() * 90;
+    const el = document.createElement('div');
+    el.className = 'floater';
+    el.style.cssText =
+      `width:${size}px;height:${size}px;` +
+      `left:${Math.random() * 100}%;top:${Math.random() * 100}%;` +
+      `background:${colors[i % colors.length]};` +
+      `--dx:${(Math.random() - 0.5) * 160}px;--dy:${(Math.random() - 0.5) * 160}px;` +
+      `--dur:${5 + Math.random() * 7}s;--delay:${-Math.random() * 8}s;`;
+    lock.prepend(el);
+  }
+}
+
+try { if (sessionStorage.getItem(KEY) === '1') unlock(); } catch (e) {}
+
+if (document.getElementById('lock')) {
+  spawnFloaters(18);
+  document.getElementById('loginForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const form = e.currentTarget, err = document.getElementById('err');
+    if (await sha256(document.getElementById('pw').value) === PW_HASH) {
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      unlock();
+    } else {
+      err.textContent = 'Wrong password.';
+      form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake');
+    }
+  });
+}
+</script>
+</body>
+</html>
