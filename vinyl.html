@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl &amp; CDs &middot; Jiarui Mao</title>
+<link rel="icon" type="image/png" href="img/favicon.png?v=2">
+<link rel="alternate icon" type="image/svg+xml" href="img/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Redaction+35:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#27187E; --blue:#74A2FC; --accent:#FF5E00; --frame:#B0C6FF; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { min-height: 100vh; padding: 36px 20px 48px; font-family: 'IBM Plex Sans', sans-serif; color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #dbe5ff 78%, #B0C6FF 100%); background-attachment: fixed; }
+.back-btn { position: fixed; top: 22px; left: 22px; z-index: 5; font-family: 'Jersey 20', sans-serif; font-size: 1.3rem; letter-spacing: .05em; text-transform: uppercase; line-height: 1; padding: 9px 14px 8px; background: var(--navy); color: #fff; text-decoration: none; transition: background .15s; }
+.back-btn:hover { background: var(--accent); }
+.shell { width: min(1040px, 100%); margin: 38px auto 0; padding: 36px 36px 44px; background: rgba(255,255,255,0.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 6px double var(--frame); box-shadow: 0 10px 40px rgba(39,24,126,0.10); }
+.kicker { font-family: 'Redaction 35', serif; font-size: 1rem; color: #5f8df0; margin-bottom: 4px; }
+h1 { font-family: 'Jersey 20', sans-serif; font-size: 3.4rem; font-weight: 400; letter-spacing: .03em; line-height: 1; color: var(--accent); margin-bottom: 28px; }
+.layout { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; }
+/* side panel */
+.side h2 { font-family: 'Jersey 20', sans-serif; font-weight: 400; font-size: 1.25rem; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); padding-bottom: 6px; border-bottom: 5px double var(--navy); margin-bottom: 14px; }
+.side + .side, .side-block { margin-top: 28px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { font-family: 'Jersey 20', sans-serif; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; line-height: 1; padding: 6px 10px 5px; border: 2px solid var(--navy); background: transparent; color: var(--navy); box-shadow: 3px 3px 0 var(--navy); cursor: pointer; transition: transform .1s, box-shadow .1s; }
+.pill:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--navy); }
+.pill.active { background: var(--navy); color: #fff; box-shadow: 3px 3px 0 var(--blue); }
+.count { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; color: var(--navy); }
+/* grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 30px 26px; }
+.rec { display: block; align-self: start; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.sleeve { position: relative; aspect-ratio: 1; background: #fff; border: 2px solid var(--navy); box-shadow: 4px 4px 0 var(--navy); overflow: hidden; display: flex; align-items: center; justify-content: flex-start; padding-left: 8%; }
+.cover { position: relative; z-index: 2; height: 74%; aspect-ratio: 1; object-fit: cover; box-shadow: 2px 2px 0 rgba(39,24,126,.35); transition: transform .3s; }
+.disc { position: absolute; z-index: 1; height: 70%; aspect-ratio: 1; left: 33%; border-radius: 50%;
+  background: radial-gradient(circle, #FF5E00 0 9%, #1a1a1a 9.5% 11%, #151515 11.5% 100%), #151515;
+  box-shadow: inset 0 0 0 3px #2a2a2a; transition: transform .45s cubic-bezier(.3,.7,.3,1); }
+.disc::after { content:''; position:absolute; inset:14%; border-radius:50%; border:1px solid rgba(255,255,255,.12); box-shadow: 0 0 0 7px rgba(255,255,255,.05); }
+.rec.cd .disc { background: radial-gradient(circle, #B0C6FF 0 8%, #fff 8.5% 18%, transparent 18.5%), conic-gradient(#e9eefc, #b9c3e6, #f7f9ff, #aab6dd, #e9eefc); box-shadow: inset 0 0 0 3px #c9d3f0; }
+.rec.cd .disc::after { border-color: rgba(39,24,126,.12); box-shadow: 0 0 0 7px rgba(39,24,126,.05); }
+.rec:hover .disc { transform: translateX(22%) rotate(120deg); }
+.rec:hover .cover { transform: translateX(-4%); }
+.meta { padding-top: 12px; }
+.title { font-weight: 600; font-size: 1rem; line-height: 1.25; color: #000; }
+.rec:hover .title { color: var(--accent); }
+.artist { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-top: 3px; }
+.rating { margin-top: 8px; font-family: 'Jersey 20', sans-serif; font-size: 1.15rem; letter-spacing: .06em; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+.rating small { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: 0; color: var(--navy); }
+.fmt { margin-top: 6px; font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #5f8df0; }
+.noimg { position: relative; z-index: 2; height: 74%; aspect-ratio: 1; display: flex; align-items: flex-end; padding: 10px; background: var(--frame); box-shadow: 2px 2px 0 rgba(39,24,126,.35); font-family: 'Jersey 20', sans-serif; font-size: 1.15rem; line-height: 1.05; letter-spacing: .03em; text-transform: uppercase; color: var(--navy); overflow: hidden; word-break: break-word; }
+.card .noimg { width: 100%; height: auto; border: 2px solid var(--navy); box-shadow: 4px 4px 0 var(--navy); font-size: 1.6rem; }
+.rating.none { color: #b4bce0; }
+.empty { color: var(--navy); font-family: 'Jersey 20', sans-serif; font-size: 1.2rem; }
+/* review modal */
+.modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(39,24,126,.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.modal.open { display: flex; }
+.card { position: relative; width: min(720px, 100%); max-height: 92vh; overflow: auto; display: grid; grid-template-columns: 250px 1fr; gap: 30px; padding: 34px; background: #fff; border: 6px double var(--frame); box-shadow: 8px 8px 0 var(--navy); }
+.card img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--navy); box-shadow: 4px 4px 0 var(--navy); }
+.card h3 { font-family: 'Jersey 20', sans-serif; font-weight: 400; font-size: 2.2rem; line-height: 1; letter-spacing: .03em; color: var(--navy); }
+.card .artist { font-size: .8rem; margin: 8px 0 14px; }
+.card .rating { margin: 0 0 18px; font-size: 1.5rem; }
+.card .label { font-family: 'Redaction 35', serif; font-size: 1rem; color: #5f8df0; margin-bottom: 4px; }
+.card p { line-height: 1.6; }
+.close { position: absolute; top: 12px; right: 12px; font-family: 'Jersey 20', sans-serif; font-size: 1.1rem; letter-spacing: .05em; text-transform: uppercase; background: var(--navy); color: #fff; border: 0; padding: 6px 10px 5px; cursor: pointer; }
+.close:hover { background: var(--accent); }
+@media (max-width: 760px) { .layout { grid-template-columns: 1fr; gap: 26px; } .card { grid-template-columns: 1fr; } .shell { padding: 26px 18px 34px; } }
+</style>
+</head>
+<body>
+  <a class="back-btn" href="index.html#life">&larr; Back</a>
+  <main class="shell">
+    <div class="kicker">Jiarui&rsquo;s record shelf</div>
+    <h1>Vinyl &amp; CDs</h1>
+    <div class="layout">
+      <aside>
+        <div class="side">
+          <h2>Format</h2>
+          <div class="pills" id="formats"></div>
+        </div>
+        <div class="side-block side">
+          <h2>Genre</h2>
+          <div class="pills" id="genres"></div>
+        </div>
+        <div class="side-block side">
+          <h2>Shelf</h2>
+          <div class="count" id="count"></div>
+        </div>
+      </aside>
+      <section class="grid" id="grid"></section>
+    </div>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="card" role="dialog" aria-modal="true">
+      <button class="close" id="close" type="button">Close</button>
+      <div><img id="mImg" alt=""><div class="noimg" id="mNo" style="display:none"></div></div>
+      <div>
+        <h3 id="mTitle"></h3>
+        <div class="artist" id="mArtist"></div>
+        <div class="rating" id="mRating"></div>
+        <div class="label">My review</div>
+        <p id="mReview"></p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Add new records here: cover goes in img/vinyl/, rating is out of 5.
+  var VINYLS = [
+    { title: 'The Dark Side Of The Moon', artist: 'Pink Floyd', genre: 'Rock', format: 'Vinyl LP', rating: 5,
+      cover: 'img/vinyl/The_Dark_Side_Of_The_Moon.jpg', review: 'always a classic for test!' },
+    { title: 'Modern Vampires Of The City', artist: 'Vampire Weekend', genre: 'Indie', format: 'Vinyl LP', rating: null,
+      cover: 'img/vinyl/Modern_Vampires_Of_The_City.jpg', review: null },
+    { title: 'Vampire Weekend', artist: 'Vampire Weekend', genre: 'Indie', format: 'Vinyl LP', rating: null,
+      cover: 'img/vinyl/Vampire_Weekend.jpg', review: null },
+    { title: 'Architecture & Morality', artist: 'Orchestral Manoeuvres In The Dark', genre: 'Synth-pop', format: 'Vinyl LP', rating: null,
+      cover: 'img/vinyl/Architecture_Morality.jpg', review: null },
+    { title: 'Rock Machine', artist: 'La Femme', genre: 'Rock', format: 'CD', rating: null,
+      cover: 'img/vinyl/Rock_Machine.jpg', review: null },
+    { title: 'American Psycho', artist: 'Musical', genre: 'Musical', format: 'CD', rating: null,
+      cover: 'img/vinyl/American_Psycho.jpg', review: null }
+  ];
+  var genre = 'All', format = 'All', FORMATS = ['All', 'Vinyl', 'CD'];
+  function stars(n) { if (n == null) return '\u2606\u2606\u2606\u2606\u2606'; return '\u2605'.repeat(n) + '\u2606'.repeat(5 - n); }
+  function rt(v) { return v.rating == null ? 'not rated yet' : v.rating + '/5'; }
+  function isFmt(v) { return format === 'All' || v.format.indexOf(format) === 0; }
+  function art(v) { return v.cover ? '<img class="cover" src="' + v.cover + '" alt="' + esc(v.title) + '">' : '<div class="noimg">' + esc(v.title) + '</div>'; }
+  function esc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+  function renderGenres() {
+    var gs = ['All'].concat(VINYLS.map(function (v) { return v.genre; }).filter(function (g, i, a) { return a.indexOf(g) === i; }));
+    document.getElementById('genres').innerHTML = gs.map(function (g) {
+      return '<button class="pill' + (g === genre ? ' active' : '') + '" data-g="' + esc(g) + '">' + esc(g) + '</button>'; }).join('');
+  }
+  function renderFormats() {
+    document.getElementById('formats').innerHTML = FORMATS.map(function (f) {
+      return '<button class="pill' + (f === format ? ' active' : '') + '" data-f="' + f + '">' + (f === 'CD' ? 'CDs' : f) + '</button>'; }).join('');
+  }
+  function renderGrid() {
+    var list = VINYLS.map(function (v, i) { return { v: v, i: i }; }).filter(function (o) { return (genre === 'All' || o.v.genre === genre) && isFmt(o.v); });
+    document.getElementById('count').textContent = list.length + (list.length === 1 ? ' record' : ' records');
+    document.getElementById('grid').innerHTML = list.length ? list.map(function (o) {
+      var v = o.v;
+      return '<button class="rec' + (v.format === 'CD' ? ' cd' : '') + '" data-i="' + o.i + '"><div class="sleeve"><div class="disc"></div>' + art(v) + '</div>' +
+        '<div class="meta"><div class="title">' + esc(v.title) + '</div><div class="artist">' + esc(v.artist) + '</div><div class="fmt">' + esc(v.format) + '</div>' +
+        '<div class="rating' + (v.rating == null ? ' none' : '') + '">' + stars(v.rating) + '<small>' + rt(v) + '</small></div></div></button>'; }).join('') : '<div class="empty">nothing here yet - CDs coming soon</div>';
+  }
+  function openCard(i) {
+    var v = VINYLS[i];
+    var mi = document.getElementById('mImg'); mi.style.display = v.cover ? '' : 'none'; if (v.cover) mi.src = v.cover;
+    var ph = document.getElementById('mNo'); ph.style.display = v.cover ? 'none' : ''; ph.textContent = v.title;
+    document.getElementById('mTitle').textContent = v.title;
+    document.getElementById('mArtist').textContent = v.artist;
+    document.getElementById('mRating').className = 'rating' + (v.rating == null ? ' none' : '');
+    document.getElementById('mRating').innerHTML = stars(v.rating) + '<small>' + rt(v) + '</small>';
+    document.getElementById('mReview').textContent = v.review || 'No review yet.';
+    document.getElementById('modal').classList.add('open');
+  }
+  function closeCard() { document.getElementById('modal').classList.remove('open'); }
+  document.getElementById('formats').addEventListener('click', function (e) {
+    var b = e.target.closest('.pill'); if (!b) return; format = b.getAttribute('data-f'); renderFormats(); renderGrid(); });
+  document.getElementById('genres').addEventListener('click', function (e) {
+    var b = e.target.closest('.pill'); if (!b) return; genre = b.getAttribute('data-g'); renderGenres(); renderGrid(); });
+  document.getElementById('grid').addEventListener('click', function (e) {
+    var b = e.target.closest('.rec'); if (b) openCard(+b.getAttribute('data-i')); });
+  document.getElementById('close').addEventListener('click', closeCard);
+  document.getElementById('modal').addEventListener('click', function (e) { if (e.target === this) closeCard(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCard(); });
+  renderFormats(); renderGenres(); renderGrid();
+</script>
+</body>
+</html>

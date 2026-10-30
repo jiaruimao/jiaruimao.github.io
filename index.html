@@ -4,24 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jiarui Mao</title>
-<link rel="icon" type="image/png" href="img/favicon.png">
-<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/favicon.png?v=2">
+<link rel="alternate icon" type="image/svg+xml" href="img/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
 
 <!-- Open Graph / Social Preview -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jiaruimao.github.io/">
 <meta property="og:title" content="Jiarui Mao">
-<meta property="og:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
+<meta property="og:description" content="Ph.D. Student in Computer Science &middot; UNC Chapel Hill.">
 <meta property="og:image" content="https://jiaruimao.github.io/img/profile.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jiarui Mao">
-<meta name="twitter:description" content="B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026).">
+<meta name="twitter:description" content="Ph.D. Student in Computer Science &middot; UNC Chapel Hill.">
 <meta name="twitter:image" content="https://jiaruimao.github.io/img/profile.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Jersey+20&family=Redaction+35:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    SAM NGUYEN — PERSONAL ACADEMIC SITE
@@ -50,10 +51,10 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 
 body {
-  font-family: 'Source Sans 3', -apple-system, sans-serif;
+  font-family: 'IBM Plex Sans', -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
   line-height: 1.72;
@@ -78,22 +79,22 @@ a:hover { color: var(--blue-hover); }
   top: 0;
   z-index: 100;
   background: var(--nav-bg);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .topnav .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 56px;
+  height: 72px;
 }
 
 .topnav .site-name {
-  font-family: "ITC Avant Garde Gothic Std Bold", "ITC Avant Garde Gothic", "Avant Garde", "Century Gothic", sans-serif;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 400;
   color: var(--white);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .topnav .nav-links {
@@ -105,8 +106,10 @@ a:hover { color: var(--blue-hover); }
 }
 
 .topnav .nav-links a {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
   color: var(--nav-text);
   padding: 6px 12px;
   border-radius: 5px;
@@ -116,6 +119,64 @@ a:hover { color: var(--blue-hover); }
 .topnav .nav-links a:hover {
   color: var(--nav-text-hover);
   background: rgba(255,255,255,0.08);
+}
+
+.topnav .nav-links a.contact-btn {
+  background: #FF5E00;
+  color: #1a1a1a;
+  margin-left: 8px;
+  padding: 6px 16px;
+  border-radius: 5px;
+}
+.topnav .nav-links a.contact-btn:hover {
+  background: #ff7a2e;
+  color: #1a1a1a;
+}
+
+.topnav .nav-links .bg-toggle,
+.topnav .nav-links .theme-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  margin-left: 4px;
+  align-self: center;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.1);
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.topnav .nav-links .bg-toggle:hover,
+.topnav .nav-links .theme-btn:hover { background: rgba(255,255,255,0.28); transform: scale(1.08); }
+.topnav .nav-links .theme-btn:active,
+.topnav .nav-links .bg-toggle:active { transform: scale(0.94); }
+
+/* Switchable page background layer (modes are placeholders for now) */
+#bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#bg-layer pre.ascii-brain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  line-height: 1;
+  white-space: pre;
+  color: rgba(255,255,255,0.6);
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  user-select: none;
 }
 
 /* Mobile nav toggle */
@@ -166,17 +227,27 @@ a:hover { color: var(--blue-hover); }
 }
 
 .hero-info h1 {
-  font-family: "ITC Avant Garde Gothic Std Bold", "ITC Avant Garde Gothic", "Avant Garde", "Century Gothic", sans-serif;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 4rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   color: var(--navy);
 }
 
+.hero-info .tagline {
+  margin-top: 4px;
+  font-family: 'Redaction 35', serif;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: var(--navy);
+}
 .hero-info .subtitle {
-  font-size: 1.02rem;
-  color: var(--text-secondary);
-  margin-top: 2px;
+  font-family: 'Redaction 35', serif;
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-shadow: 0 1px 6px rgba(39,24,126,0.55);
+  margin-top: 0;
+  margin-bottom: 2px;
   font-weight: 400;
 }
 
@@ -205,24 +276,75 @@ a:hover { color: var(--blue-hover); }
 .hero-links {
   display: flex;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 22px;
   flex-wrap: wrap;
 }
 
+/* pixel-key link buttons, same family as the filter buttons */
 .hero-links a {
-  font-size: 0.82rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
   color: var(--navy);
-  padding: 6px 14px;
-  border: 1.5px solid var(--navy);
-  border-radius: 5px;
-  transition: all 0.2s;
+  padding: 5px 9px 4px;
+  border: 2px solid var(--navy);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: 3px 3px 0 var(--navy);
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
 }
+.hero-links a::after {
+  content: "\2197";
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.hero-links a[href="contact.html"]::after { content: "\2192"; }
 .hero-links a:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #ffffff;
+  text-decoration: none;
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--navy);
 }
+.hero-links a:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--navy);
+}
+
+/* Page background + one frosted-glass card holding all content */
+body {
+  background: linear-gradient(180deg, #27187E 0, #27187E 700px, #33258f 1500px, #4a3bb5 2400px, #6a5bd0 100%);
+  min-height: 100vh;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 35%, rgba(116,162,252,0.28) 0, transparent 30%),
+    radial-gradient(circle at 88% 50%, rgba(150,120,255,0.30) 0, transparent 32%),
+    radial-gradient(circle at 75% 95%, rgba(255,94,0,0.14) 0, transparent 28%);
+}
+.glass-card {
+  margin: 40px 0 64px;
+  padding: 24px 44px 8px;
+  background: rgba(255,255,255,0.55);
+  -webkit-backdrop-filter: blur(28px) saturate(120%);
+  backdrop-filter: blur(28px) saturate(120%);
+  border: 6px double rgba(255,255,255,0.8);   /* double-rule frame (border_bigpanel) */
+  border-radius: 0;
+  box-shadow: 0 10px 40px rgba(20,10,80,0.18);
+}
+.glass-card .container { padding: 0; max-width: none; }
+.glass-card #about { padding-top: 0; }
+.glass-card .hero { padding: 24px 0 36px; }
+.hero-links a:hover { background: var(--accent); border-color: var(--accent); color: #1a1a1a; }
 
 /* ============================================================
    SECTIONS — shared
@@ -238,8 +360,14 @@ section h2 {
   color: var(--navy);
   margin-bottom: 22px;
   padding-bottom: 8px;
-  border-bottom: 2.5px solid var(--blue);
-  display: inline-block;
+  border-bottom: 5px double var(--navy);   /* double rule, echoing the big panel frame */
+  display: block;
+}
+
+#news h2, #presentations h2, #life h2 {
+  font-family: 'Redaction 35', serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 /* ============================================================
@@ -257,11 +385,13 @@ section h2 {
 
 .news-date {
   flex-shrink: 0;
-  width: 90px;
-  color: var(--blue);
-  font-weight: 600;
-  font-size: 0.83rem;
-  padding-top: 1px;
+  width: 150px;
+  white-space: nowrap;
+  color: var(--navy);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 0.76rem;
+  padding-top: 3px;
 }
 
 .news-tag {
@@ -297,21 +427,22 @@ section h2 {
 
 .show-all-btn {
   display: block;
-  margin: 16px auto 0;
-  padding: 8px 20px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--blue);
+  margin: 18px auto 0;
+  padding: 4px 8px;
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
   background: none;
-  border: 1.5px solid var(--blue);
-  border-radius: 5px;
+  border: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.15s;
 }
-.show-all-btn:hover {
-  background: var(--blue);
-  color: #ffffff;
+.show-all-btn:hover,
+.show-all-btn:active,
+.show-all-btn.expanded {
+  color: var(--accent);
 }
 
 .news-filters {
@@ -320,30 +451,51 @@ section h2 {
   margin-bottom: 18px;
   flex-wrap: wrap;
 }
-
 .filter-btn {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 5px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  background: none;
-  color: var(--text-secondary);
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 14px 2px;
+  border: 2px solid var(--navy);
+  border-radius: 0;
+  background: transparent;
+  color: var(--navy);
+  box-shadow: 3px 3px 0 var(--navy);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s;
 }
 .filter-btn:hover {
-  border-color: var(--navy);
-  color: var(--navy);
+  background: rgba(118,120,237,0.16);
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--navy);
+}
+.filter-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--navy);
 }
 .filter-btn.active {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--navy);
+  border-color: var(--navy);
   color: #ffffff;
+  box-shadow: 3px 3px 0 var(--blue);
 }
 
 /* news filtering handled by JS */
+
+/* inline links inside text: bold and dark blue */
+a.ext-link {
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+a.ext-link:hover {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
 
 /* ============================================================
    PRESENTATIONS & TALKS
@@ -564,16 +716,95 @@ section h2 {
   line-height: 1.4;
 }
 
+
+/* ---- Beyond the Lab card deck ---- */
+.lab-deck { display:flex; justify-content:center; align-items:flex-start; padding:18px 0 26px; }
+.lab-card { position:relative; background:none; border:0; padding:0; cursor:pointer; width:215px; flex:0 0 auto;
+  margin-left:-60px; text-align:left; transition:transform .25s ease, z-index 0s; z-index:1; }
+.lab-card:first-child { margin-left:0; }
+.lab-card:nth-child(odd) { transform:rotate(-1.4deg); }
+.lab-card:nth-child(even) { transform:rotate(1.4deg); }
+.lab-card .lab-thumb { box-shadow:4px 4px 0 var(--navy), -10px 0 16px rgba(39,24,126,0.28); }
+.lab-card:hover, .lab-card:focus-visible { transform:translateY(-12px) scale(1.14) rotate(0deg); z-index:10; }
+.lab-card .lab-thumb { display:block; width:100%; aspect-ratio:0.615; object-fit:contain; box-shadow:4px 4px 0 var(--navy); }
+.lab-card .lab-tag { position:absolute; left:10px; bottom:10px; display:flex; flex-direction:column; align-items:flex-start;
+  line-height:1; background:var(--navy); padding:6px 9px 5px; border:0;
+  font-family:'Jersey 20', sans-serif; font-size:1.3rem; letter-spacing:0.05em; text-transform:uppercase; color:#fff; }
+.lab-card .lab-tag i { font-style:normal; font-size:1.25rem; margin-top:2px; transition:transform .2s; }
+.lab-card:hover .lab-tag, .lab-card:focus-visible .lab-tag { background:#FF5E00; color:#fff; }
+.lab-card:hover .lab-tag i { transform:translateX(-5px); }
+.lab-modal { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center;
+  background:rgba(39,24,126,0.55); backdrop-filter:blur(6px); }
+.lab-modal.open { display:flex; }
+.lab-modal-inner { position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; max-height:92vh; }
+.lab-modal img { max-height:78vh; max-width:88vw; box-shadow:8px 8px 0 var(--navy); animation:lab-pop .25s ease-out; }
+@keyframes lab-pop { from { transform:scale(.8) rotate(-3deg); opacity:0; } to { transform:none; opacity:1; } }
+
+/* ---- Beyond the Lab: same look in day and night ---- */
+.lab-card .lab-thumb { background:#fff; border:3px solid var(--navy); }
+.lab-card .t-night { display:none; }
+.lab-modal img { background:#fff; border:4px solid var(--navy); }
+.lab-modal-title { font-family:'Jersey 20', sans-serif; font-size:1.6rem; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+.lab-modal-nav { display:flex; gap:24px; align-items:center; }
+.lab-modal-nav button { background:none; border:0; cursor:pointer; font-family:'Jersey 20', sans-serif; font-size:1.5rem; color:#fff; }
+.lab-modal-nav button:hover { color:#FF5E00; }
+@media (max-width:700px) { .lab-card { width:30vw; margin-left:-8vw; } }
+
 /* ============================================================
    FOOTER
    ============================================================ */
 footer {
   margin-top: 56px;
   padding: 24px 0;
-  border-top: 1px solid var(--border);
   text-align: center;
   font-size: 0.82rem;
-  color: var(--text-light);
+  color: #000000;
+}
+
+/* ============================================================
+   DAY FORM  (html[data-theme="day"]; night is the default design above)
+   ============================================================ */
+html[data-theme="day"] {
+  --nav-bg: #ffffff;
+  --nav-text: #27187E;
+  --nav-text-hover: #5f8df0;
+  --text: #000000;
+  --text-secondary: #000000;
+  --text-light: #333333;
+  --blue-hover: #5f8df0;
+}
+html[data-theme="day"] body { background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #dbe5ff 78%, #B0C6FF 100%); }
+html[data-theme="day"] body::before { display: none; }
+
+/* top panel */
+html[data-theme="day"] .topnav .site-name { color: #27187E; }
+html[data-theme="day"] .topnav .nav-links a:hover { background: rgba(95,141,240,0.12); }
+html[data-theme="day"] .topnav .nav-links a.contact-btn:hover { background: #5f8df0; color: #1a1a1a; }
+html[data-theme="day"] .nav-toggle span { background: #27187E; }
+html[data-theme="day"] .topnav .nav-links .bg-toggle,
+html[data-theme="day"] .topnav .nav-links .theme-btn {
+  color: #27187E;
+  border-color: rgba(39,24,126,0.6);
+  background: rgba(39,24,126,0.05);
+}
+html[data-theme="day"] .topnav .nav-links .bg-toggle:hover,
+html[data-theme="day"] .topnav .nav-links .theme-btn:hover { background: #5f8df0; color: #ffffff; border-color: #5f8df0; }
+
+/* glass card */
+html[data-theme="day"] .glass-card {
+  background: rgba(176,198,255,0.14);
+  border: 6px double #B0C6FF;
+  box-shadow: 0 10px 40px rgba(39,24,126,0.10);
+}
+html[data-theme="day"] .hero-info .subtitle { color: #5f8df0; text-shadow: none; }
+html[data-theme="day"] .hero-links a:hover { background: #5f8df0; border-color: #5f8df0; color: #ffffff; }
+html[data-theme="day"] footer { color: #000000; }
+
+/* ASCII brain / surface background */
+html[data-theme="day"] #bg-layer pre.ascii-brain {
+  color: #27187E;
+  opacity: 0.55;
+  text-shadow: none;
 }
 
 /* ============================================================
@@ -607,6 +838,7 @@ footer {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 700px) {
+  .glass-card { padding: 16px 18px 4px; }
   .hero {
     flex-direction: column;
     align-items: center;
@@ -643,6 +875,7 @@ footer {
 </style>
 </head>
 <body>
+<div id="bg-layer" aria-hidden="true"></div>
 
 <!-- ========== NAVIGATION ========== -->
 <nav class="topnav">
@@ -652,37 +885,40 @@ footer {
       <span></span><span></span><span></span>
     </button>
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#news">CV Highlights</a>
-      <a href="#work">Work</a>
+      <a href="#news">Work</a>
       <a href="#life">Life</a>
+      <a href="https://www.linkedin.com/in/monicamao0615/?locale=en" target="_blank" rel="noopener" class="contact-btn">Contact me!</a>
+      <button type="button" class="bg-toggle" id="bg-toggle" aria-label="Change background" title="Change background">&#9673;</button>
+      <button type="button" class="theme-btn" id="theme-btn" aria-label="Switch to day form" title="Night form (click for day form)">&#9790;</button>
     </div>
   </div>
 </nav>
 
 <!-- ========== HERO / ABOUT ========== -->
 <div class="container" id="top">
+<div class="glass-card">
 
   <section id="about">
     <div class="hero">
       <img src="img/profile.png" alt="Jiarui Mao" class="hero-photo">
 
       <div class="hero-info">
+        <p class="subtitle">Ph.D. Student in Computer Science &middot; UNC Chapel Hill</p>
         <h1>Jiarui Mao</h1>
-        <p class="subtitle">B.S. in Biostatistics, Minor in Neuroscience · UNC-Chapel Hill (May 2026)<span class="blinking-cursor">|</span></p>
+        <p class="tagline">Mapping how the brain&rsquo;s structure and function develop.<span class="blinking-cursor">|</span></p>
         <p class="bio">
-          Undergraduate researcher and student leader focused on neuroscience, psychology, and quantitative methods.
-          I work across wet-lab and computational workflows, including EEG/ERP studies, MRI/fMRI processing, and
-          statistical analysis using R, Python, and MATLAB.
-        </p>
-        <p class="bio" style="margin-top: 8px;">
-          Currently active in leadership and service through the International Neuroscience and Psychology Scholars Club
-          (Founder &amp; President), Angelcare Breast Cancer Volunteer Group, and academic coaching at the UNC Learning Center.
+          I study brain development. My work combines EEG, fMRI, and diffusion MRI with cortical surface methods to
+          understand how the brain's structure and function emerge and mature, especially in infancy, including
+          structure&ndash;function coupling, functional gradients, and excitation&ndash;inhibition balance.
+          I build computational pipelines for large-scale neuroimaging data, from denoising and preprocessing to
+          surface-based analysis and visualization.
         </p>
 
         <div class="hero-links">
-          <a href="mailto:jiaruim@ad.unc.edu">Email</a>
-          <a href="#">LinkedIn</a>
+          <a href="contact.html">Email</a>
+          <a href="https://www.linkedin.com/in/monicamao0615/?locale=en" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=1U0_8Y8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="files/Jiarui_Mao_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
         </div>
       </div>
     </div>
@@ -693,21 +929,42 @@ footer {
     <h2>CV Highlights</h2>
     <div class="news-filters">
       <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="research">Research</button>
       <button class="filter-btn" data-filter="education">Education</button>
       <button class="filter-btn" data-filter="leadership">Leadership</button>
-      <button class="filter-btn" data-filter="research">Research</button>
+      <button class="filter-btn" data-filter="awards">Awards</button>
     </div>
     <ul class="news-list">
       <li data-tag="education">
-        <span class="news-date">May 2026</span>
-        <span>B.S. in Biostatistics with a minor in Neuroscience at UNC-Chapel Hill. GPA 3.87.</span>
+        <span class="news-date">Sep 2026 - Present</span>
+        <span>Ph.D. student in Computer Science (first year).</span>
       </li>
       <li data-tag="education">
-        <span class="news-date">2022 - 2024</span>
-        <span>Dean's List from Fall 2022 through Spring 2024.</span>
+        <span class="news-date">May 2026</span>
+        <span>B.S. in Biostatistics with a minor in Neuroscience at UNC-Chapel Hill.</span>
+      </li>
+      <li data-tag="awards">
+        <span class="news-date">2025</span>
+        <span>Office of Undergraduate Research (OUR) Travel Award: travel scholarship to present undergraduate research at a national conference.</span>
+      </li>
+      <li data-tag="awards">
+        <span class="news-date">2025</span>
+        <span>Kimball King Undergraduate Research Award: scholarship supporting senior honors thesis research.</span>
+      </li>
+      <li data-tag="awards">
+        <span class="news-date">2025</span>
+        <span>International Society for Magnetic Resonance in Medicine (ISMRM) Travel Award: scholarship and membership to present research at the annual meeting.</span>
+      </li>
+      <li data-tag="awards">
+        <span class="news-date">2025</span>
+        <span>Society for Neuroscience (SfN) Member, sponsored by Dr. Pew-Thian Yap's Lab, Department of Radiology, UNC-Chapel Hill.</span>
+      </li>
+      <li data-tag="awards">
+        <span class="news-date">2022 - 2025</span>
+        <span>Dean's List: top 20% of undergraduates at UNC-Chapel Hill (minimum 3.50 GPA).</span>
       </li>
       <li data-tag="leadership">
-        <span class="news-date">Mar 2023 - Present</span>
+        <span class="news-date">Mar 2023 - May 2026</span>
         <span>Founder and President, International Neuroscience and Psychology Scholars Club (40+ members; workshops and mentorship programs).</span>
       </li>
       <li data-tag="leadership">
@@ -720,11 +977,11 @@ footer {
       </li>
       <li data-tag="research">
         <span class="news-date">Nov 2024 - Present</span>
-        <span>Research Assistant, YAP Lab (UNC Radiology): worked on optimal shrinkage denoising in high-resolution diffusion MRI.</span>
+        <span>Research Assistant, <a class="ext-link" href="https://www.yaplab.io/" target="_blank" rel="noopener">YAP Lab</a> (UNC Radiology): worked on optimal shrinkage denoising in high-resolution diffusion MRI.</span>
       </li>
       <li data-tag="research">
         <span class="news-date">Jan 2024 - May 2024</span>
-        <span>Hopfinger Lab (UNC): EEG/ERP data collection and analysis for attentional suppression under unpredictable distractors.</span>
+        <span><a class="ext-link" href="https://tarheels.live/hoplab/people/" target="_blank" rel="noopener">Hopfinger Lab</a> (UNC): EEG/ERP data collection and analysis for attentional suppression under unpredictable distractors.</span>
       </li>
       <li data-tag="research">
         <span class="news-date">Jun 2023 - Aug 2023</span>
@@ -746,23 +1003,66 @@ footer {
 
     <div class="pres-list">
 
+    <div class="pres-card" id="pres-symposium-2026" data-pres-tags="oral">
+      <div class="pres-info">
+        <div class="pres-title">Functional Gradients and Excitation–Inhibition Balance in the Early Developing Brain <span class="pres-links"><a href="files/Symposium2026_Poster.pdf" target="_blank" rel="noopener">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Khoi H., Kim-Han T., Wenjiao L., Hoyt Patrick T., Sahar A., Pew-Thian Y.</div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-oral">Oral</span> Department of Biostatistics · UNC-Chapel Hill · May 8, 2026</div>
+        </div>
+      </div>
+      <img class="pres-thumb" src="img/thumb_symposium2026-1.jpg" alt="Symposium 2026 poster" loading="lazy">
+    </div>
+
+    <div class="pres-card" id="pres-ohbm-2026" data-pres-tags="poster">
+      <div class="pres-info">
+        <div class="pres-title">Functional Gradients and Excitation–Inhibition Balance in the Early Developing Brain <span class="pres-links"><a href="files/OHBM2026_Poster.pdf" target="_blank" rel="noopener">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Khoi H., Kim-Han T., Wenjiao L., Hoyt Patrick T., Sahar A., Pew-Thian Y.</div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> OHBM Annual Meeting · 2026</div>
+        </div>
+      </div>
+      <img class="pres-thumb" src="img/thumb_ohbm2026-1.jpg" alt="Functional Gradients and Excitation–Inhibition Balance in the Early Developing Brain poster" loading="lazy">
+    </div>
+
+    <div class="pres-card" id="pres-sfn-2025" data-pres-tags="poster">
+      <div class="pres-info">
+        <div class="pres-title">Early Structure-Function Coupling and Its Association with Myelination and E-I Balance <span class="pres-links"><a href="files/SfN2025_Poster.pdf" target="_blank" rel="noopener">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Khoi H., Kim-Han T., Sahar A., Pew-Thian Y.</div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Society for Neuroscience (SfN) · 2025</div>
+        </div>
+      </div>
+      <img class="pres-thumb" src="img/thumb_sfn2025-1.jpg" alt="Early Structure-Function Coupling and Its Association with Myelination and E-I Balance poster" loading="lazy">
+    </div>
+
+    <div class="pres-card" id="pres-ismrm-2025" data-pres-tags="poster">
+      <div class="pres-info">
+        <div class="pres-title">Precision Functional Gradients via Optimal Shrinkage Denoising <span class="pres-links"><a href="files/ISMRM2025_Poster.pdf" target="_blank" rel="noopener">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Khoi H., Kim-Han T., Patrick T., Guoye L., Sahar A., Pew-Thian Y.</div>
+        <div class="pres-venues">
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> ISMRM Annual Meeting · 2025</div>
+        </div>
+      </div>
+      <img class="pres-thumb" src="img/thumb_ismrm2025-01.jpg" alt="Precision Functional Gradients via Optimal Shrinkage Denoising poster" loading="lazy">
+    </div>
+
     <div class="pres-card" id="pres-annual-celebration" data-pres-tags="poster">
       <div class="pres-info">
-        <div class="pres-title">2-Br-LSD Treatment and Related Behavioral Outcomes <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
-        <div class="pres-authors">Oleh D., Jenny Q., Rachel P., <strong>J. Mao</strong></div>
+        <div class="pres-title">2-Br-LSD Treatment of Mood and Depressive Disorders <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Oleh D., Jenny Q. &amp; Rachel P.</div>
         <div class="pres-venues">
-          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Annual Celebration of Undergraduate Research · Chapel Hill, NC · April 2024</div>
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Annual Celebration of Undergraduate Research · Chapel Hill, NC, United States · April 2024</div>
         </div>
       </div>
     </div>
 
-    <div class="pres-card" id="pres-psych-symposium" data-pres-tags="oral poster">
+    <div class="pres-card" id="pres-psych-symposium" data-pres-tags="poster">
       <div class="pres-info">
-        <div class="pres-title">Neuroscience and Psychology Student Research Symposium Contributions <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
-        <div class="pres-authors">Khoi H., T. Patrick, Guoye L., <strong>J. Mao</strong></div>
+        <div class="pres-title">Lowering thermal noise in functional MRI with optimal shrinkage denoising <span class="pres-links"><a href="#" class="disabled">PDF</a></span></div>
+        <div class="pres-authors"><strong>J. Mao</strong>, Khoi H. &amp; Pew-Thian Y.</div>
         <div class="pres-venues">
-          <div class="pres-venue-row"><span class="pres-type type-oral">Oral</span> UNC Student Research Events · Chapel Hill, NC · 2024</div>
-          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> Departmental/Student Symposiums · Chapel Hill, NC · 2024</div>
+          <div class="pres-venue-row"><span class="pres-type type-poster">Poster</span> 2024 Radiology Departmental Research Symposium · Chapel Hill, NC, United States</div>
         </div>
       </div>
     </div>
@@ -774,6 +1074,19 @@ footer {
   <section id="life">
     <h2>Beyond the Lab</h2>
     <div class="life-grid"></div>
+    <div class="lab-deck">
+      <button class="lab-card" data-i="0" data-href="pokemon.html"><img class="lab-thumb t-day" src="img/lab/card1_ascii_thumb_day.png" alt=""><span class="lab-tag">Pok&eacute;mon<i>&larr;</i></span></button>
+      <button class="lab-card" data-i="1" data-href="vinyl.html"><img class="lab-thumb t-day" src="img/lab/card2_ascii_thumb_day.png" alt=""><span class="lab-tag">Vinyl &amp; CDs<i>&larr;</i></span></button>
+      <button class="lab-card" data-i="2" data-full="img/lab/card3_ascii"><img class="lab-thumb t-day" src="img/lab/card3_ascii_thumb_day.png" alt=""><span class="lab-tag">Cycle<i>&larr;</i></span></button>
+      <button class="lab-card" data-i="3" data-full="img/lab/card4_ascii"><img class="lab-thumb t-day" src="img/lab/card4_ascii_thumb_day.png" alt=""><span class="lab-tag">Draw<i>&larr;</i></span></button>
+    </div>
+    <div class="lab-modal" id="labModal" aria-hidden="true">
+      <div class="lab-modal-inner">
+        <div class="lab-modal-title" id="labTitle"></div>
+        <img id="labImg" alt="">
+        <div class="lab-modal-nav"><button id="labPrev">&larr; prev</button><button id="labClose">close</button><button id="labNext">next &rarr;</button></div>
+      </div>
+    </div>
   </section>
 
   <!-- ========== FOOTER ========== -->
@@ -782,11 +1095,165 @@ footer {
   </footer>
 
 </div>
+</div>
+
+<script src="js/brain_ascii.js"></script>
+<script src="js/surface_ascii.js"></script>
 
 <!-- ========== BACK TO TOP ========== -->
 <button class="back-to-top" onclick="window.scrollTo({top:0})" aria-label="Back to top">↑</button>
 
 <script>
+  // Background modes: click the round button to cycle. A random one is shown on each visit.
+  // - brain grid / half brain: mean fMRI volume as ASCII axial slices that step upward as the page scrolls
+  // - rotating surface: 360-degree horizontal spin of the white cortical surface (needs js/surface_ascii.js)
+  (function () {
+    const layer = document.getElementById('bg-layer');
+    const btn = document.getElementById('bg-toggle');
+    const HEADER = 72;                        // top panel height (px)
+    let brains = [];                          // { el, layout() } for the active mode
+    let spinTimer = null;
+
+    // Bounding box (in character cells) of the art across ALL frames = the "largest place".
+    const bboxCache = new Map();
+    function getBBox(d) {
+      if (bboxCache.has(d)) return bboxCache.get(d);
+      let minC = Infinity, maxC = -1, minR = Infinity, maxR = -1;
+      d.frames.forEach(f => f.split('\n').forEach((line, r) => {
+        const t = line.trimEnd();
+        if (!t) return;
+        const c0 = t.length - t.trimStart().length;
+        minC = Math.min(minC, c0); maxC = Math.max(maxC, t.length - 1);
+        minR = Math.min(minR, r); maxR = Math.max(maxR, r);
+      }));
+      const bb = { minC, maxC, minR, maxR, w: maxC - minC + 1, h: maxR - minR + 1 };
+      bboxCache.set(d, bb);
+      return bb;
+    }
+    function scrollSlice() {
+      const d = window.BRAIN_ASCII;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const t = max > 0 ? Math.min(Math.max(window.scrollY / max, 0), 1) : 0;
+      const first = Math.floor(d.frames.length * 0.3);   // skip the thin bottom-of-brain slices
+      return d.frames[first + Math.round(t * (d.frames.length - 1 - first))];
+    }
+    function makePre() {
+      const el = document.createElement('pre');
+      el.className = 'ascii-brain';
+      layer.appendChild(el);
+      return el;
+    }
+    // Put the art's bounding-box centre at (cx, cy) with the given font size.
+    function place(d, el, fs, cx, cy) {
+      const b = getBBox(d);
+      el.style.fontSize = fs.toFixed(2) + 'px';
+      el.style.left = (cx - ((b.minC + b.maxC + 1) / 2) * fs * 0.6).toFixed(1) + 'px';
+      el.style.top  = (cy - ((b.minR + b.maxR + 1) / 2) * fs).toFixed(1) + 'px';
+    }
+    // 4 columns x 3 rows of tiles, each showing the same animated art.
+    function gridLayout(d, COLS, ROWS) {
+      for (let i = 0; i < COLS * ROWS; i++) {
+        const el = makePre();
+        const col = i % COLS, row = Math.floor(i / COLS);
+        brains.push({ el, layout() {
+          const b = getBBox(d);
+          const cw = window.innerWidth / COLS, ch = (window.innerHeight - HEADER) / ROWS;
+          const fs = Math.min((cw * 0.9) / (b.w * 0.6), (ch * 0.9) / b.h);
+          place(d, el, fs, cw * (col + 0.5), HEADER + ch * (row + 0.5));
+        }});
+      }
+    }
+
+    // Mode: 4 x 3 ASCII brains (scroll-driven slices).
+    function renderBrainGrid() {
+      if (window.BRAIN_ASCII) gridLayout(window.BRAIN_ASCII, 4, 3);
+    }
+    // Mode: one big brain whose centre sits on the right edge of the screen, so only its left half
+    // is visible and the right half is cut off. Sized by height (as large as fits under the header).
+    function renderHalfBrain() {
+      const d = window.BRAIN_ASCII;
+      if (!d) return;
+      const el = makePre();
+      brains.push({ el, layout() {
+        const b = getBBox(d);
+        const fs = (window.innerHeight - HEADER - 40) / b.h;
+        place(d, el, fs, window.innerWidth, HEADER + (window.innerHeight - HEADER) / 2);
+      }});
+    }
+    // Mode: 4 x 3 white cortical surfaces, spinning 360 degrees about the vertical axis.
+    let spinFrame = 0;
+    function renderSurfaceGrid() {
+      const d = window.SURFACE_ASCII;
+      if (!d) return;
+      gridLayout(d, 4, 3);
+      spinTimer = setInterval(() => {
+        spinFrame = (spinFrame + 1) % d.frames.length;
+        brains.forEach(b => { b.el.textContent = d.frames[spinFrame]; });
+      }, 90);
+    }
+
+    function updateBrains() {
+      if (layer.dataset.mode === 'surface-grid-4x3' || !brains.length) return;
+      const text = scrollSlice();
+      brains.forEach(b => { b.el.textContent = text; });
+    }
+    function layoutBrains() { brains.forEach(b => b.layout()); }
+    window.addEventListener('scroll', updateBrains, { passive: true });
+    window.addEventListener('resize', () => { layoutBrains(); updateBrains(); });
+
+    // No empty modes: only backgrounds that actually draw something are listed. One is picked at random on load.
+    const modes = [
+      { id: 'brain-grid-4x3',   label: '4 x 3 ASCII brains (scroll through slices)',            render: renderBrainGrid },
+      { id: 'brain-half-right', label: 'One big ASCII brain, left half on the right edge (scroll through slices)', render: renderHalfBrain }
+    ];
+    if (window.SURFACE_ASCII) {
+      modes.push({ id: 'surface-grid-4x3', label: '4 x 3 rotating white surface (360 degrees)', render: renderSurfaceGrid });
+    }
+    const forced = parseInt(new URLSearchParams(location.search).get('bg'), 10);
+    let current = Number.isInteger(forced) && modes[forced] ? forced : Math.floor(Math.random() * modes.length);   // random background on every visit
+
+    function apply() {
+      const m = modes[current];
+      clearInterval(spinTimer);
+      layer.innerHTML = '';
+      brains = [];
+      layer.dataset.mode = m.id;
+      m.render();
+      layoutBrains();
+      updateBrains();
+      btn.title = 'Background: ' + m.label + ' (click for next)';
+    }
+
+    btn.addEventListener('click', () => {
+      current = (current + 1) % modes.length;
+      apply();
+    });
+    apply();
+  })();
+
+  // Day / night form. The page opens in the day form; ?theme=night opens the night form directly.
+  (function () {
+    const btn = document.getElementById('theme-btn');
+    const root = document.documentElement;
+    function setTheme(day) {
+      root.dataset.theme = day ? 'day' : 'night';
+      btn.innerHTML = day ? '&#9728;' : '&#9790;';
+      btn.title = day ? 'Day form (click for night form)' : 'Night form (click for day form)';
+      btn.setAttribute('aria-label', day ? 'Switch to night form' : 'Switch to day form');
+    }
+    setTheme(new URLSearchParams(location.search).get('theme') !== 'night');
+    btn.addEventListener('click', () => setTheme(root.dataset.theme === 'night'));
+  })();
+
+  // CV Highlights filter buttons show how many entries each filter has, e.g. "All (25)".
+  document.querySelectorAll('.news-filters .filter-btn').forEach(btn => {
+    const f = btn.dataset.filter;
+    const n = f === 'all'
+      ? document.querySelectorAll('.news-list li').length
+      : document.querySelectorAll('.news-list li[data-tag="' + f + '"]').length;
+    btn.textContent = btn.textContent.trim() + ' (' + n + ')';
+  });
+
   // Back to top visibility
   const btn = document.querySelector('.back-to-top');
   window.addEventListener('scroll', () => {
@@ -794,7 +1261,7 @@ footer {
   });
 
   // News: max visible items
-  const NEWS_MAX = 15;
+  const NEWS_MAX = 8;
   let newsExpanded = false;
   let newsFilter = 'all';
 
@@ -837,6 +1304,7 @@ footer {
   function toggleNews(button) {
     newsExpanded = !newsExpanded;
     applyNewsDisplay();
+    button.classList.toggle('expanded', newsExpanded);
   }
 
   // News tag filter buttons
@@ -892,5 +1360,24 @@ footer {
   });
 </script>
 
+<script>
+(function(){
+  var all=[].slice.call(document.querySelectorAll('.lab-card')),cards=all.filter(function(c){return !c.dataset.href;}),m=document.getElementById('labModal'),i=0;
+  if(!m)return;
+  function show(n){i=(n+cards.length)%cards.length;var c=cards[i];
+    var n='day';
+    document.getElementById('labImg').src=c.getAttribute('data-full')+'_'+n+'.png';
+    document.getElementById('labTitle').textContent=c.querySelector('.lab-tag').firstChild.textContent;}
+  function open(n){show(n);m.classList.add('open');}
+  function close(){m.classList.remove('open');}
+  all.forEach(function(c){c.addEventListener('click',function(){if(c.dataset.href){location.href=c.dataset.href;}else{open(cards.indexOf(c));}});});
+  document.getElementById('labPrev').onclick=function(){show(i-1);};
+  document.getElementById('labNext').onclick=function(){show(i+1);};
+  document.getElementById('labClose').onclick=close;
+  m.addEventListener('click',function(e){if(e.target===m)close();});
+  document.addEventListener('keydown',function(e){if(!m.classList.contains('open'))return;
+    if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
+})();
+</script>
 </body>
 </html>

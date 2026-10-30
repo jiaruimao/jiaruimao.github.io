@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add me on Pok&eacute;mon GO!</title>
+<link rel="icon" type="image/png" href="img/favicon.png?v=2">
+<link rel="alternate icon" type="image/svg+xml" href="img/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Redaction+35:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#27187E; --blue:#74A2FC; --accent:#FF5E00; --frame:#B0C6FF; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  padding: 40px 20px; font-family: 'IBM Plex Sans', sans-serif; color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #dbe5ff 78%, #B0C6FF 100%);
+}
+.panel { position: relative; z-index: 1; width: min(560px, 100%); padding: 44px 40px; background: rgba(255,255,255,0.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 6px double var(--frame); box-shadow: 0 10px 40px rgba(39,24,126,0.10); }
+.kicker { font-family: 'Redaction 35', serif; font-size: 1rem; color: #5f8df0; margin-bottom: 6px; }
+h1 { font-family: 'Jersey 20', sans-serif; font-size: 3.6rem; font-weight: 400; letter-spacing: .03em; line-height: 1; color: var(--accent); margin-bottom: 14px; }
+p { line-height: 1.6; margin-bottom: 22px; }
+.address { display: block; padding: 12px 14px; margin-bottom: 22px; border: 2px solid var(--navy); background: #fff; font-family: ui-monospace, Menlo, monospace; font-size: 1.05rem; color: var(--navy); user-select: all; word-break: break-all; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { font-family: 'Jersey 20', sans-serif; font-size: 1.25rem; letter-spacing: .03em; text-transform: uppercase; line-height: 1; padding: 9px 14px 8px; border: 2px solid var(--navy); background: transparent; color: var(--navy); box-shadow: 4px 4px 0 var(--navy); cursor: pointer; text-decoration: none; transition: transform .12s, box-shadow .12s, background .12s; }
+.btn:hover { background: rgba(95,141,240,.18); transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--navy); }
+.btn:active { transform: translate(4px,4px); box-shadow: 0 0 0 var(--navy); }
+.btn.primary { background: var(--navy); color: #fff; box-shadow: 4px 4px 0 var(--blue); }
+.btn.primary:hover { background: var(--navy); box-shadow: 5px 5px 0 var(--blue); }
+.back { position: relative; z-index: 1; font-family: 'Jersey 20', sans-serif; font-size: 1.2rem; letter-spacing: .03em; color: var(--navy); text-decoration: none; text-transform: uppercase; }
+.back:hover { color: #5f8df0; }
+#bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+#bg-layer pre { position: absolute; top: 0; left: 0; margin: 0; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; line-height: 1; white-space: pre; color: #27187E; opacity: 0.55; user-select: none; }
+</style>
+<style>
+.id-box { display:block; padding:12px 14px; margin-bottom:22px; border:2px solid var(--navy); background:#fff; font-family:ui-monospace, Menlo, monospace; font-size:1.15rem; color:var(--navy); user-select:all; }
+.pw { display:flex; gap:12px; flex-wrap:wrap; }
+.pw input { flex:1 1 220px; padding:10px 12px; border:2px solid var(--navy); background:#fff; font-family:'IBM Plex Mono', monospace; font-size:.95rem; color:var(--navy); outline:none; border-radius:0; }
+.pw input::placeholder { color:#8a93c4; }
+.pw input:focus { border-color:var(--accent); }
+.msg { min-height:1.4em; margin:12px 0 0; font-family:'Jersey 20', sans-serif; font-size:1.15rem; letter-spacing:.03em; color:var(--accent); }
+.shake { animation: shake .35s; }
+@keyframes shake { 20%{transform:translateX(-6px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)} }
+</style>
+
+<body>
+  <div id="bg-layer" aria-hidden="true"></div>
+  <main class="panel">
+    <div class="kicker">Trainer code</div>
+    <h1>Add me on Pok&eacute;mon GO!</h1>
+    <p>My code:</p>
+    <span class="id-box" id="uname">8451 9564 8218</span>
+    <form class="pw" id="pwForm" autocomplete="off">
+      <input type="password" id="pw" placeholder="...if you know what you are doing ;_)" aria-label="password">
+      <button class="btn primary" type="submit">Enter</button>
+    </form>
+    <div class="msg" id="msg"></div>
+  </main>
+  <a class="back" href="index.html#life">&larr; Back to Jiarui Mao</a>
+<script>
+  document.getElementById('pwForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var inp = document.getElementById('pw'), msg = document.getElementById('msg');
+    if (inp.value === 'hailMagikarp') { location.href = 'secret.html'; return; }
+    msg.textContent = 'nope. try again.';
+    inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); inp.select();
+  });
+</script>
+<script src="js/surface_ascii.js"></script>
+<script src="js/surface_bg.js"></script>
+</body>
+</html>

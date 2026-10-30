@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Jiarui Mao</title>
+<link rel="icon" type="image/png" href="img/favicon.png?v=2">
+<link rel="alternate icon" type="image/svg+xml" href="img/favicon.svg?v=2">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Redaction+35:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --navy:#27187E; --blue:#74A2FC; --accent:#FF5E00; --frame:#B0C6FF; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  padding: 40px 20px; font-family: 'IBM Plex Sans', sans-serif; color: #000;
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #dbe5ff 78%, #B0C6FF 100%);
+}
+.panel { position: relative; z-index: 1; width: min(560px, 100%); padding: 44px 40px; background: rgba(255,255,255,0.62); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 6px double var(--frame); box-shadow: 0 10px 40px rgba(39,24,126,0.10); }
+.kicker { font-family: 'Redaction 35', serif; font-size: 1rem; color: #5f8df0; margin-bottom: 6px; }
+h1 { font-family: 'Jersey 20', sans-serif; font-size: 3.6rem; font-weight: 400; letter-spacing: .03em; line-height: 1; color: var(--accent); margin-bottom: 14px; }
+p { line-height: 1.6; margin-bottom: 22px; }
+.address { display: block; padding: 12px 14px; margin-bottom: 22px; border: 2px solid var(--navy); background: #fff; font-family: ui-monospace, Menlo, monospace; font-size: 1.05rem; color: var(--navy); user-select: all; word-break: break-all; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { font-family: 'Jersey 20', sans-serif; font-size: 1.25rem; letter-spacing: .03em; text-transform: uppercase; line-height: 1; padding: 9px 14px 8px; border: 2px solid var(--navy); background: transparent; color: var(--navy); box-shadow: 4px 4px 0 var(--navy); cursor: pointer; text-decoration: none; transition: transform .12s, box-shadow .12s, background .12s; }
+.btn:hover { background: rgba(95,141,240,.18); transform: translate(-1px,-1px); box-shadow: 5px 5px 0 var(--navy); }
+.btn:active { transform: translate(4px,4px); box-shadow: 0 0 0 var(--navy); }
+.btn.primary { background: var(--navy); color: #fff; box-shadow: 4px 4px 0 var(--blue); }
+.btn.primary:hover { background: var(--navy); box-shadow: 5px 5px 0 var(--blue); }
+.back { position: relative; z-index: 1; font-family: 'Jersey 20', sans-serif; font-size: 1.2rem; letter-spacing: .03em; color: var(--navy); text-decoration: none; text-transform: uppercase; }
+.back:hover { color: #5f8df0; }
+#bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+#bg-layer pre { position: absolute; top: 0; left: 0; margin: 0; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; line-height: 1; white-space: pre; color: #27187E; opacity: 0.55; user-select: none; }
+</style>
+</head>
+<body>
+  <div id="bg-layer" aria-hidden="true"></div>
+  <main class="panel">
+    <div class="kicker">Get in touch</div>
+    <h1>Email me!</h1>
+    <p>Mail apps don&rsquo;t always open from a web page, so pick whichever is easiest :D</p>
+    <span class="address" id="addr">jiaruim@ad.unc.edu</span>
+    <div class="actions">
+      <button class="btn primary" id="copy" type="button">Copy address</button>
+      <a class="btn" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=jiaruim@ad.unc.edu" target="_blank" rel="noopener">Open in Gmail</a>
+      <a class="btn" href="mailto:jiaruim@ad.unc.edu">Open mail app</a>
+    </div>
+  </main>
+  <a class="back" href="index.html">&larr; Back to Jiarui Mao</a>
+<script>
+  document.getElementById('copy').addEventListener('click', async function () {
+    const t = document.getElementById('addr').textContent;
+    try { await navigator.clipboard.writeText(t); this.textContent = 'Copied!'; }
+    catch (e) {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('addr'));
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); this.textContent = 'Press Cmd/Ctrl+C';
+    }
+    setTimeout(() => { this.textContent = 'Copy address'; }, 2200);
+  });
+</script>
+<script src="js/surface_ascii.js"></script>
+<script>
+  // Background: 4 x 3 white cortical surfaces, each spinning 360 degrees about the vertical axis.
+  (function () {
+    const d = window.SURFACE_ASCII;
+    if (!d) return;
+    const layer = document.getElementById('bg-layer');
+    const COLS = 4, ROWS = 3;
+    let minC = Infinity, maxC = -1, minR = Infinity, maxR = -1;
+    d.frames.forEach(f => f.split('\n').forEach((line, r) => {
+      const t = line.trimEnd(); if (!t) return;
+      minC = Math.min(minC, t.length - t.trimStart().length); maxC = Math.max(maxC, t.length - 1);
+      minR = Math.min(minR, r); maxR = Math.max(maxR, r);
+    }));
+    const bw = maxC - minC + 1, bh = maxR - minR + 1;
+    const tiles = [];
+    for (let i = 0; i < COLS * ROWS; i++) {
+      const el = document.createElement('pre'); layer.appendChild(el);
+      tiles.push({ el, col: i % COLS, row: Math.floor(i / COLS) });
+    }
+    function layout() {
+      const cw = innerWidth / COLS, ch = innerHeight / ROWS;
+      const fs = Math.min((cw * 0.9) / (bw * 0.6), (ch * 0.9) / bh);
+      tiles.forEach(t => {
+        t.el.style.fontSize = fs.toFixed(2) + 'px';
+        t.el.style.left = (cw * (t.col + 0.5) - ((minC + maxC + 1) / 2) * fs * 0.6).toFixed(1) + 'px';
+        t.el.style.top  = (ch * (t.row + 0.5) - ((minR + maxR + 1) / 2) * fs).toFixed(1) + 'px';
+      });
+    }
+    let k = 0;
+    function draw() { tiles.forEach(t => { t.el.textContent = d.frames[k]; }); }
+    layout(); draw();
+    addEventListener('resize', layout);
+    setInterval(() => { k = (k + 1) % d.frames.length; draw(); }, 90);
+  })();
+</script>
+</body>
+</html>
