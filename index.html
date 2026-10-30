@@ -1077,8 +1077,8 @@ html[data-theme="day"] #bg-layer pre.ascii-brain {
     <div class="lab-deck">
       <button class="lab-card" data-i="0" data-href="pokemon.html"><img class="lab-thumb t-day" src="img/lab/card1_ascii_thumb_day.png" alt=""><span class="lab-tag">Pok&eacute;mon<i>&larr;</i></span></button>
       <button class="lab-card" data-i="1" data-href="vinyl.html"><img class="lab-thumb t-day" src="img/lab/card2_ascii_thumb_day.png" alt=""><span class="lab-tag">Vinyl &amp; CDs<i>&larr;</i></span></button>
-      <button class="lab-card" data-i="2" data-full="img/lab/card3_ascii"><img class="lab-thumb t-day" src="img/lab/card3_ascii_thumb_day.png" alt=""><span class="lab-tag">Cycle<i>&larr;</i></span></button>
-      <button class="lab-card" data-i="3" data-full="img/lab/card4_ascii"><img class="lab-thumb t-day" src="img/lab/card4_ascii_thumb_day.png" alt=""><span class="lab-tag">Draw<i>&larr;</i></span></button>
+      <button class="lab-card" data-i="2" data-href="cycling.html"><img class="lab-thumb t-day" src="img/lab/card3_ascii_thumb_day.png" alt=""><span class="lab-tag">Cycle<i>&larr;</i></span></button>
+      <button class="lab-card" data-i="3" data-href="draw.html"><img class="lab-thumb t-day" src="img/lab/card4_ascii_thumb_day.png" alt=""><span class="lab-tag">Art &amp; Design<i>&larr;</i></span></button>
     </div>
     <div class="lab-modal" id="labModal" aria-hidden="true">
       <div class="lab-modal-inner">
@@ -1378,6 +1378,16 @@ html[data-theme="day"] #bg-layer pre.ascii-brain {
   document.addEventListener('keydown',function(e){if(!m.classList.contains('open'))return;
     if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1);});
 })();
+</script>
+<script>
+// Click on the empty background (outside the card) -> back to the top of the main page, without the #life / #news part in the address.
+document.addEventListener('click', function (e) {
+  var t = e.target;
+  if (t !== document.documentElement && t !== document.body && t.id !== 'top') return;
+  if (document.getElementById('labModal') && document.getElementById('labModal').classList.contains('open')) return;
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 </script>
 </body>
 </html>
