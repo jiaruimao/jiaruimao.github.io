@@ -35,3 +35,5 @@ User-agent: Omgilibot
 Disallow: /
 User-agent: *
 Allow: /
+
+Sitemap: https://jiaruimao.github.io/sitemap.xml
